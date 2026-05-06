@@ -3,953 +3,305 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AYUVA Construction Cost Benchmark Report — Dubai 2024-2026</title>
+<title>ドバイ建築コスト 1平米あたり ベンチマーク</title>
 <style>
 :root{
   --forest:#1B3A0D;--green:#2D5016;--med:#4A7C29;--sage:#A8C686;
   --gold:#B8963E;--gold-dk:#8C6F26;--brown:#4A2E0A;
-  --cream:#FDFAF3;--pale-green:#EBF3E1;--pale-gold:#F5EDD4;
-  --dark:#2B2B2B;--mid:#555;--light:#999;--accent:#D4DFC8;
-  --white:#FFF;--bg:#F7F5F0;--bg2:#FAFDF7;
-  --warn:#B85C00;--warn-bg:#FDF3E7;
-  --danger:#8C2A1F;--danger-bg:#FBEEEB
+  --cream:#FDFAF3;--pale-green:#EBF3E1;
+  --dark:#2B2B2B;--mid:#666;--light:#999;--accent:#D4DFC8;
+  --white:#FFF;--bg:#F7F5F0
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{font-family:-apple-system,'Helvetica Neue','Hiragino Kaku Gothic ProN',sans-serif;background:var(--bg);color:var(--dark);line-height:1.75;-webkit-font-smoothing:antialiased}
 
-/* HEADER */
-.header{background:linear-gradient(135deg,var(--forest),#0d2106);padding:28px 0;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold);box-shadow:0 2px 12px rgba(0,0,0,.15)}
-.header-inner{max-width:1100px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.brand h1{font-size:18px;letter-spacing:5px;color:var(--white);font-weight:800}
-.brand .sub{color:var(--sage);font-size:11px;margin-top:4px;letter-spacing:1.5px}
-.meta-pill{background:rgba(184,150,62,.18);border:1px solid var(--gold);color:var(--gold);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:1px}
+.hero{background:linear-gradient(180deg,var(--forest) 0%,#143008 100%);color:var(--white);padding:64px 24px;text-align:center;border-bottom:4px solid var(--gold)}
+.hero-inner{max-width:980px;margin:0 auto}
+.hero .label{font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:700;margin-bottom:14px}
+.hero h1{font-size:32px;line-height:1.4;font-weight:800;margin-bottom:14px;letter-spacing:.5px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero .lead{font-size:14px;line-height:1.85;color:#D8C99A;max-width:680px;margin:0 auto}
 
-/* HERO */
-.hero{background:linear-gradient(180deg,var(--forest) 0%,#143008 100%);color:var(--white);padding:64px 32px 80px;text-align:center;border-bottom:4px solid var(--gold)}
-.hero-inner{max-width:900px;margin:0 auto}
-.hero .label{font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:700;margin-bottom:18px}
-.hero h2{font-size:34px;line-height:1.4;font-weight:800;margin-bottom:18px;letter-spacing:.5px}
-.hero h2 em{color:var(--gold);font-style:normal}
-.hero .lead{font-size:15px;line-height:1.95;color:#E8DDB7;max-width:760px;margin:0 auto 28px}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;margin:32px auto 0}
-.hero-stat{background:rgba(255,255,255,.06);border:1px solid rgba(184,150,62,.4);border-radius:10px;padding:18px 14px}
-.hero-stat .lbl{font-size:10px;color:var(--sage);letter-spacing:1.5px;font-weight:700;margin-bottom:6px}
-.hero-stat .val{font-size:18px;color:var(--gold);font-weight:800;letter-spacing:.5px}
-.hero-stat .sub{font-size:11px;color:#C8B98C;margin-top:4px}
+.headline{padding:48px 24px;background:var(--cream);border-bottom:1px solid var(--accent)}
+.headline-inner{max-width:980px;margin:0 auto}
+.headline-title{text-align:center;margin-bottom:32px}
+.headline-title .top{font-size:11px;letter-spacing:3px;color:var(--gold);font-weight:800}
+.headline-title h2{font-size:24px;color:var(--forest);font-weight:800;margin-top:8px;letter-spacing:.5px}
+.headline-title p{font-size:13px;color:var(--mid);margin-top:8px}
 
-/* TOC */
-.toc{background:var(--white);border-bottom:1px solid var(--accent);padding:18px 32px;position:sticky;top:84px;z-index:90;box-shadow:0 2px 6px rgba(0,0,0,.04)}
-.toc-inner{max-width:1100px;margin:0 auto;display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-size:12px}
-.toc-label{color:var(--gold);font-weight:700;letter-spacing:1.5px;font-size:10px}
-.toc a{color:var(--green);text-decoration:none;font-weight:600;padding:4px 10px;border-radius:4px;transition:all .15s}
-.toc a:hover{background:var(--pale-green);color:var(--forest)}
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tier{background:var(--white);border-radius:12px;padding:24px 20px;border-top:5px solid var(--med);box-shadow:0 1px 3px rgba(0,0,0,.04);text-align:center}
+.tier.t-prem{border-top-color:var(--gold);background:linear-gradient(180deg,#FFFCF3,#FFF)}
+.tier.t-ultra{border-top-color:var(--gold-dk);background:linear-gradient(180deg,#FAF5E8,#FFF)}
+.tier .grade{font-size:10px;letter-spacing:2px;color:var(--med);font-weight:800;margin-bottom:6px}
+.tier.t-prem .grade,.tier.t-ultra .grade{color:var(--gold-dk)}
+.tier .name{font-size:18px;color:var(--forest);font-weight:800;margin-bottom:18px;letter-spacing:.3px}
+.tier .aed{font-size:22px;color:var(--brown);font-weight:800;letter-spacing:.5px;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.tier .usd{font-size:13px;color:var(--mid);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.tier .jpy{font-size:13px;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
+.tier .unit{font-size:10px;color:var(--light);margin-top:8px;letter-spacing:.5px}
 
-/* CONTAINER */
-.container{max-width:1100px;margin:0 auto;padding:48px 32px 80px}
-section{margin-bottom:64px;scroll-margin-top:170px}
-.sec-head{margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--accent)}
-.sec-head .num{display:inline-block;background:var(--gold);color:var(--forest);font-size:11px;font-weight:800;padding:3px 10px;border-radius:12px;margin-right:10px;letter-spacing:1px}
-.sec-head h3{display:inline;font-size:22px;color:var(--forest);font-weight:800;letter-spacing:.3px}
-.sec-head .desc{margin-top:8px;color:var(--mid);font-size:13px;line-height:1.7}
+.container{max-width:980px;margin:0 auto;padding:48px 24px 64px}
+section{margin-bottom:48px}
+.sec-title{margin-bottom:20px}
+.sec-title .num{display:inline-block;background:var(--gold);color:var(--forest);font-size:11px;font-weight:800;padding:3px 10px;border-radius:12px;margin-right:10px;letter-spacing:1px}
+.sec-title h3{display:inline;font-size:20px;color:var(--forest);font-weight:800;letter-spacing:.3px}
+.sec-title .desc{margin-top:8px;color:var(--mid);font-size:13px;line-height:1.7}
 
-/* CARDS */
-.card{background:var(--white);border-radius:12px;border:1px solid var(--accent);padding:26px 28px;box-shadow:0 1px 3px rgba(0,0,0,.03);margin-bottom:18px}
-.card h4{font-size:15px;color:var(--forest);font-weight:800;margin-bottom:14px;letter-spacing:.3px}
-.card h4 .tag{font-size:10px;background:var(--gold);color:var(--forest);padding:2px 8px;border-radius:8px;margin-left:8px;letter-spacing:1px;vertical-align:middle}
-.card p{font-size:13.5px;color:var(--dark);line-height:1.85;margin-bottom:10px}
-.card p:last-child{margin-bottom:0}
-.card b{color:var(--brown);font-weight:700}
+.card{background:var(--white);border-radius:12px;border:1px solid var(--accent);padding:24px 26px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
 
-.callout{background:var(--pale-green);border-left:4px solid var(--med);padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0;font-size:13px;color:var(--green);font-weight:600;line-height:1.75}
-.callout.warn{background:var(--warn-bg);border-left-color:var(--warn);color:var(--warn)}
-.callout.danger{background:var(--danger-bg);border-left-color:var(--danger);color:var(--danger)}
-.callout strong{font-weight:800}
-
-/* TABLES */
-.tbl-wrap{overflow-x:auto;margin:14px 0 18px;border-radius:8px;border:1px solid var(--accent)}
-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;background:var(--white);min-width:640px}
+.tbl-wrap{overflow-x:auto;margin:0;border-radius:8px;border:1px solid var(--accent)}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;background:var(--white);min-width:560px}
 th{background:var(--green);color:var(--white);padding:11px 13px;text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;border-bottom:2px solid var(--gold)}
 th.right,td.right{text-align:right;font-variant-numeric:tabular-nums}
-th.center,td.center{text-align:center}
 td{padding:10px 13px;border-bottom:1px solid #EEE;vertical-align:top;line-height:1.6}
 tr:last-child td{border-bottom:none}
 tr:nth-child(even) td{background:#FAFDF7}
 td.use{font-weight:700;color:var(--forest)}
-.tier-ultra{color:var(--gold-dk);font-weight:700}
-.tier-prem{color:var(--med);font-weight:700}
-.tier-mid{color:var(--mid);font-weight:600}
-.tier-aff{color:var(--light);font-weight:600}
-.cur-aed{color:var(--brown);font-weight:700;font-size:12.5px}
-.cur-usd{color:var(--mid);font-size:11.5px;display:block}
-.cur-jpy{color:var(--green);font-size:11.5px;display:block;font-weight:600}
-.flag-gdv{display:inline-block;background:var(--warn-bg);color:var(--warn);padding:1px 7px;border-radius:8px;font-size:9.5px;font-weight:800;letter-spacing:.5px;margin-left:4px}
-.flag-cost{display:inline-block;background:var(--pale-green);color:var(--green);padding:1px 7px;border-radius:8px;font-size:9.5px;font-weight:800;letter-spacing:.5px;margin-left:4px}
-.flag-mix{display:inline-block;background:#F0EBE0;color:var(--gold-dk);padding:1px 7px;border-radius:8px;font-size:9.5px;font-weight:800;letter-spacing:.5px;margin-left:4px}
 
-/* SCENARIO CARDS */
-.scen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:20px 0 8px}
-.scen{background:var(--white);border:1px solid var(--accent);border-top:5px solid var(--med);border-radius:10px;padding:22px 22px 24px;transition:transform .2s,box-shadow .2s}
-.scen:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(27,58,13,.08)}
-.scen.base{border-top-color:var(--gold);background:linear-gradient(180deg,#FFFCF3,#FFF)}
-.scen.ultra{border-top-color:var(--forest);background:linear-gradient(180deg,#F5F8F0,#FFF)}
-.scen .grade{font-size:10px;color:var(--gold);letter-spacing:2px;font-weight:800;margin-bottom:6px}
-.scen .name{font-size:16px;color:var(--forest);font-weight:800;margin-bottom:14px;letter-spacing:.3px}
-.scen .name .recommend{display:inline-block;background:var(--gold);color:var(--forest);font-size:9px;padding:2px 7px;border-radius:8px;letter-spacing:1px;margin-left:6px;vertical-align:middle}
-.scen .rate{font-size:11px;color:var(--mid);font-weight:700;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--accent)}
-.scen .total-aed{font-size:24px;color:var(--brown);font-weight:800;letter-spacing:.5px;margin-bottom:4px}
-.scen .total-usd{font-size:13px;color:var(--mid);font-weight:600;margin-bottom:2px}
-.scen .total-jpy{font-size:13px;color:var(--green);font-weight:700;margin-bottom:14px}
-.scen .row{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mid);padding:5px 0;border-top:1px dashed #EEE}
-.scen .row b{color:var(--dark)}
-.scen .desc{margin-top:12px;font-size:11.5px;color:var(--mid);line-height:1.65;font-style:italic}
+.note{background:var(--pale-green);border-left:4px solid var(--med);padding:14px 18px;border-radius:0 8px 8px 0;margin-top:16px;font-size:12.5px;color:var(--green);font-weight:600;line-height:1.75}
+.note strong{font-weight:800}
 
-/* BREAKDOWN BARS */
-.bd{margin:14px 0 4px}
-.bd-row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:12px}
-.bd-label{flex:0 0 200px;color:var(--dark);font-weight:600}
-.bd-bar-bg{flex:1;height:24px;background:#F2EEE2;border-radius:4px;overflow:hidden;position:relative}
-.bd-bar{height:100%;background:linear-gradient(90deg,var(--med),var(--green));border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding:0 8px;color:var(--white);font-size:10.5px;font-weight:700}
-.bd-amt{flex:0 0 130px;text-align:right;color:var(--brown);font-weight:700;font-size:12px;font-variant-numeric:tabular-nums}
+.comm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
+.comm{background:var(--white);border:1px solid var(--accent);border-left:4px solid var(--gold);border-radius:8px;padding:16px 20px}
+.comm .name{font-size:14px;color:var(--forest);font-weight:800;margin-bottom:4px}
+.comm .dev{font-size:11px;color:var(--mid);letter-spacing:.5px;margin-bottom:10px}
+.comm .stat{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-top:1px dashed #EEE}
+.comm .stat:first-of-type{border-top:none}
+.comm .stat b{color:var(--brown);font-weight:700;font-variant-numeric:tabular-nums}
+.flag{display:inline-block;font-size:9px;font-weight:800;padding:1px 6px;border-radius:8px;letter-spacing:.5px;margin-left:4px}
+.flag-cost{background:var(--pale-green);color:var(--green)}
+.flag-gdv{background:#FBEEEB;color:#8C2A1F}
+.flag-mix{background:#F5EDD4;color:var(--gold-dk)}
 
-/* FX BLOCK */
-.fx-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
-.fx-cell{background:var(--bg2);border:1px solid var(--accent);border-radius:8px;padding:14px 12px;text-align:center}
-.fx-cell .pair{font-size:10px;color:var(--mid);letter-spacing:1px;font-weight:700;margin-bottom:6px}
-.fx-cell .val{font-size:16px;color:var(--forest);font-weight:800;font-variant-numeric:tabular-nums}
+.fx{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.fx-cell{background:var(--cream);border:1px solid var(--accent);border-radius:8px;padding:12px 10px;text-align:center}
+.fx-cell .pair{font-size:9.5px;color:var(--mid);letter-spacing:1px;font-weight:700;margin-bottom:4px}
+.fx-cell .val{font-size:15px;color:var(--forest);font-weight:800;font-variant-numeric:tabular-nums}
 
-/* SPECS BLOCK */
-.specs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
-.spec{background:var(--pale-green);border-left:3px solid var(--med);padding:12px 14px;border-radius:0 6px 6px 0}
-.spec .lbl{font-size:10px;color:var(--green);letter-spacing:1px;font-weight:700;margin-bottom:4px;text-transform:uppercase}
-.spec .val{font-size:16px;color:var(--forest);font-weight:800}
-.spec .sub{font-size:11px;color:var(--mid);margin-top:2px}
-
-/* COMPARISON */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
-.compare-card{background:var(--white);border:1px solid var(--accent);border-radius:10px;padding:20px}
-.compare-card h5{font-size:13px;color:var(--gold-dk);font-weight:800;margin-bottom:12px;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--accent)}
-.compare-row{display:flex;justify-content:space-between;font-size:12.5px;padding:7px 0;border-bottom:1px dashed #EEE}
-.compare-row:last-child{border-bottom:none}
-.compare-row b{color:var(--brown)}
-
-/* RISK */
-.risks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.risk{background:var(--white);border:1px solid var(--accent);border-top:4px solid var(--warn);border-radius:8px;padding:18px 18px 20px}
-.risk h5{font-size:13px;color:var(--warn);font-weight:800;margin-bottom:10px;letter-spacing:.3px}
-.risk p{font-size:12px;color:var(--dark);line-height:1.7;margin-bottom:8px}
-.risk .mit{background:var(--pale-green);border-left:3px solid var(--med);padding:8px 10px;border-radius:0 4px 4px 0;font-size:11.5px;color:var(--green);font-weight:600;margin-top:8px}
-.risk .mit b{color:var(--forest)}
-
-/* SOURCE */
-.sources{background:var(--white);border:1px solid var(--accent);border-radius:10px;padding:22px 26px}
-.sources li{font-size:12px;color:var(--mid);line-height:1.8;margin-bottom:6px;padding-left:10px}
-.sources li b{color:var(--forest);font-weight:700}
-
-/* METHODOLOGY */
-.method{background:linear-gradient(135deg,#FFFCF3,#FFF);border:1px solid var(--gold);border-radius:10px;padding:22px 26px;margin-bottom:24px}
-.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.method-cell{background:var(--white);border-radius:8px;padding:14px;border-left:3px solid var(--gold)}
-.method-cell .src{font-size:10px;color:var(--gold-dk);font-weight:800;letter-spacing:1.5px;margin-bottom:4px}
-.method-cell .desc{font-size:11.5px;color:var(--mid);line-height:1.6}
-
-/* FOOTER */
-.footer{background:var(--forest);color:var(--sage);padding:36px 32px;text-align:center;font-size:11px;letter-spacing:1.5px}
-.footer-line{width:80px;height:2px;background:var(--gold);margin:0 auto 18px}
-.footer .by{color:var(--gold);font-weight:700;margin-top:8px}
+.footer{background:var(--forest);color:var(--sage);padding:30px 24px;text-align:center;font-size:11px;letter-spacing:1.5px}
+.footer-line{width:60px;height:2px;background:var(--gold);margin:0 auto 14px}
+.footer .by{color:var(--gold);margin-top:6px;font-weight:700}
 
 @media (max-width:840px){
-  .hero h2{font-size:24px}
-  .hero-stats,.scen-grid,.risks,.method-grid,.specs{grid-template-columns:1fr 1fr}
-  .fx-grid{grid-template-columns:1fr 1fr}
-  .compare{grid-template-columns:1fr}
-  .bd-label{flex:0 0 140px;font-size:11px}
-  .bd-amt{flex:0 0 100px;font-size:11px}
+  .hero h1{font-size:22px}
+  .tier-grid{grid-template-columns:1fr 1fr}
+  .comm-grid{grid-template-columns:1fr}
+  .fx{grid-template-columns:1fr 1fr}
 }
-@media (max-width:520px){
-  .hero-stats,.scen-grid,.risks,.method-grid,.specs{grid-template-columns:1fr}
-  .container{padding:32px 18px 60px}
-  .toc{display:none}
-}
-
-@media print{
-  .header,.toc,.footer{position:static}
-  body{background:var(--white)}
-  section{page-break-inside:avoid}
+@media (max-width:480px){
+  .tier-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <div class="brand">
-      <h1>AYUVA</h1>
-      <div class="sub">CONSTRUCTION COST BENCHMARK</div>
-    </div>
-    <div class="meta-pill">DUBAI · 2024-2026 · INVESTOR REPORT</div>
-  </div>
-</header>
-
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="label">EXECUTIVE BRIEFING</div>
-    <h2>ドバイにおけるラグジュアリー・ウェルネス施設の<br>建築費用ベンチマーク <em>×</em> AYUVA投資試算</h2>
+    <div class="label">DUBAI · CONSTRUCTION COST PER M²</div>
+    <h1>ドバイの建築コスト <em>1平米あたり</em></h1>
     <p class="lead">
-      Turner &amp; Townsend、Arcadis、AECOM、Linesight、JLL、Stonehavenの最新コストレポートに基づき、
-      ドバイの建築費用を用途・グレード別に整理。3階建・延床36,000m²のAYUVA構想に対する
-      総投資額を3シナリオ（Mid / Premium / Ultra-Premium）で算出した防御的試算。
+      Turner &amp; Townsend、Arcadis、Stonehaven、JLL（2024-2026）の最新ベンチマークを統合。
+      ドバイで <b>1平米あたりいくらで建つか</b> を、最安〜最高級の4ティアで整理した。
     </p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="lbl">BASE CASE</div>
-        <div class="val">AED 666M</div>
-        <div class="sub">USD 181M / JPY 281億 / 約258万円/坪</div>
+  </div>
+</section>
+
+<section class="headline">
+  <div class="headline-inner">
+    <div class="headline-title">
+      <div class="top">THE HEADLINE</div>
+      <h2>結論：4ティアで見るドバイの 1m² コスト</h2>
+      <p>建築本体（Shell &amp; Core + 標準MEP + 内装仕上げ）込み。FF&amp;E・外構・許認可費は別建て。</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier">
+        <div class="grade">一番安い</div>
+        <div class="name">Affordable</div>
+        <div class="aed">AED 3,500-7,500</div>
+        <div class="usd">USD 950 - 2,000</div>
+        <div class="jpy">15-32 万円</div>
+        <div class="unit">/ m²</div>
       </div>
-      <div class="hero-stat">
-        <div class="lbl">CONSERVATIVE HIGH</div>
-        <div class="val">AED 900M</div>
-        <div class="sub">USD 245M / JPY 380億 / 約349万円/坪</div>
+      <div class="tier">
+        <div class="grade">普通</div>
+        <div class="name">Mid</div>
+        <div class="aed">AED 7,500-12,000</div>
+        <div class="usd">USD 2,000 - 3,300</div>
+        <div class="jpy">32-51 万円</div>
+        <div class="unit">/ m²</div>
       </div>
-      <div class="hero-stat">
-        <div class="lbl">FLOOR (MID)</div>
-        <div class="val">AED 432M</div>
-        <div class="sub">USD 118M / JPY 182億 / 約167万円/坪</div>
+      <div class="tier t-prem">
+        <div class="grade">プレミアム</div>
+        <div class="name">Premium</div>
+        <div class="aed">AED 12,000-18,500</div>
+        <div class="usd">USD 3,300 - 5,000</div>
+        <div class="jpy">51-78 万円</div>
+        <div class="unit">/ m²</div>
+      </div>
+      <div class="tier t-ultra">
+        <div class="grade">最高級</div>
+        <div class="name">Ultra-Premium</div>
+        <div class="aed">AED 18,500-31,000</div>
+        <div class="usd">USD 5,000 - 8,400</div>
+        <div class="jpy">78-131 万円</div>
+        <div class="unit">/ m²</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TOC -->
-<nav class="toc">
-  <div class="toc-inner">
-    <span class="toc-label">CONTENTS</span>
-    <a href="#summary">Summary</a>
-    <a href="#fx">為替前提</a>
-    <a href="#benchmark">単価ベンチマーク</a>
-    <a href="#breakdown">コスト内訳</a>
-    <a href="#community">コミュニティ実例</a>
-    <a href="#wellness">ウェルネス特殊</a>
-    <a href="#regulation">規制・許認可</a>
-    <a href="#ayuva">AYUVA試算</a>
-    <a href="#japan">日本比較</a>
-    <a href="#risk">リスク</a>
-    <a href="#sources">出典</a>
-  </div>
-</nav>
-
 <div class="container">
 
-  <!-- SUMMARY -->
-  <section id="summary">
-    <div class="sec-head">
-      <span class="num">00</span><h3>Executive Summary</h3>
-      <div class="desc">3社（Perplexity / ChatGPT Deep Research / Google Deep Research）の調査結果を統合。最も防御的なレンジを採用し、GDV（販売総額）と建設費（Construction Cost）を厳密に分離。</div>
+  <section>
+    <div class="sec-title">
+      <span class="num">01</span><h3>用途別 × グレード別マトリクス（AED/m²）</h3>
+      <div class="desc">主要用途のドバイ建築コスト。Shell &amp; Core + MEP + 内装込み。</div>
     </div>
-
-    <div class="card">
-      <h4>結論 5行 <span class="tag">DEFENSIBLE</span></h4>
-      <ol style="padding-left:22px;font-size:13.5px;line-height:2;color:var(--dark)">
-        <li>ドバイ建設市場は2025年で平均<b>USD 1,926/m²（AED 7,073/m²）</b>、TPI上昇率3.3%。Ultra-Premiumは年+8〜15%のインフレ圧力。</li>
-        <li>ウェルネス・スパ施設は <b>AED 12,200〜25,000/m²</b>。MEP比率が25〜35%と通常の2倍以上。</li>
-        <li>5★ホテル並みの単価（AED 12,000〜17,500）+ ウェルネス特殊MEP負荷 + バンブー素材プレミアム+40〜60% で実質単価押し上げ。</li>
-        <li>有名コミュニティの公開数値の多くは <b>GDV（販売総額）</b> であり建設費ではない。Sobha Hartland II・The Oasis等の逆算は要警戒。</li>
-        <li>AYUVA（GFA 36,000m²）の Base Case は <b>AED 630〜666M</b>、上振れケース <b>AED 900M</b>、下限ケース <b>AED 432M</b>。日本のアマン東京・星のや東京と同水準の坪単価。</li>
-      </ol>
-    </div>
-
-    <div class="method">
-      <h4 style="font-size:13px;color:var(--gold-dk);font-weight:800;letter-spacing:.5px;margin-bottom:6px">METHODOLOGY — 3-Source Triangulation</h4>
-      <p style="font-size:12px;color:var(--mid);line-height:1.7">3つのDeep Researchプラットフォームの結果を相互検証。各社の強みを採用し、方法論的な弱点（GDV/建設費の混同等）を相互に補正した統合版。</p>
-      <div class="method-grid">
-        <div class="method-cell">
-          <div class="src">PERPLEXITY</div>
-          <div class="desc">為替前提の固定 + 坪単価併記の構造を採用。ただしGDV/建設費の混同が見られたため数値は補正。</div>
-        </div>
-        <div class="method-cell">
-          <div class="src">CHATGPT DEEP RESEARCH</div>
-          <div class="desc">方法論的厳密性を採用。Stonehaven 2025のelemental split、GDV/建設費の明示的分離を骨格に使用。</div>
-        </div>
-        <div class="method-cell">
-          <div class="src">GOOGLE DEEP RESEARCH</div>
-          <div class="desc">バンブー特殊コスト（+40-60%）、スパ設備単品単価、日本との坪単価比較、紅海/ホルムズリスクを採用。</div>
-        </div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="tbl-wrap" style="border:none">
+        <table>
+          <thead>
+            <tr>
+              <th>用途</th>
+              <th class="right">一番安い</th>
+              <th class="right">普通</th>
+              <th class="right">プレミアム</th>
+              <th class="right">最高級</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="use">Luxury Villa</td><td class="right">4,000-5,000</td><td class="right">4,900-8,500</td><td class="right">8,400-18,200</td><td class="right">18,000-31,000</td></tr>
+            <tr><td class="use">Townhouse</td><td class="right">3,500-4,500</td><td class="right">4,250-6,000</td><td class="right">6,000-8,500</td><td class="right">9,000-12,000</td></tr>
+            <tr><td class="use">Low-rise (G+4)</td><td class="right">4,200-4,800</td><td class="right">4,800-6,000</td><td class="right">6,000-8,000</td><td class="right">8,000-11,000</td></tr>
+            <tr><td class="use">Mid-rise (G+10)</td><td class="right">4,500-5,500</td><td class="right">5,500-7,200</td><td class="right">7,200-9,500</td><td class="right">9,500-13,000</td></tr>
+            <tr><td class="use">High-rise (G+20+)</td><td class="right">5,800-7,100</td><td class="right">7,100-9,700</td><td class="right">9,700-11,000</td><td class="right">11,000-15,000</td></tr>
+            <tr><td class="use">5★ Hotel / Resort</td><td class="right">7,000-9,500</td><td class="right">8,850-12,180</td><td class="right">12,000-17,500</td><td class="right">17,500-22,000</td></tr>
+            <tr style="background:#FFFCF3"><td class="use" style="color:var(--gold-dk)">Wellness / Spa</td><td class="right">7,500-10,650</td><td class="right">10,000-12,300</td><td class="right">12,200-18,500</td><td class="right">18,500-25,000</td></tr>
+            <tr><td class="use">Clubhouse / Amenity</td><td class="right">6,100-7,600</td><td class="right">7,500-10,650</td><td class="right">10,550-15,000</td><td class="right">15,000-20,000</td></tr>
+            <tr><td class="use">Office Fit-out</td><td class="right">2,000-3,500</td><td class="right">3,500-5,500</td><td class="right">5,500-8,500</td><td class="right">8,500-13,000</td></tr>
+            <tr><td class="use">F&amp;B / Restaurant</td><td class="right">4,800-6,600</td><td class="right">6,100-10,650</td><td class="right">10,550-18,500</td><td class="right">18,500-25,000</td></tr>
+          </tbody>
+        </table>
       </div>
+    </div>
+
+    <div class="note">
+      💡 <strong>USD/JPY換算：</strong>
+      AED 10,000/m² ≒ USD 2,723/m² ≒ JPY 42.2万円/m²。AED 1 = JPY 42.21、USD 1 = AED 3.6725 で換算。
     </div>
   </section>
 
-  <!-- FX -->
-  <section id="fx">
-    <div class="sec-head">
-      <span class="num">01</span><h3>為替前提</h3>
-      <div class="desc">本レポートの全数値は以下のレートで AED / USD / JPY の3通貨を併記する。</div>
+  <section>
+    <div class="sec-title">
+      <span class="num">02</span><h3>ドバイ有名コミュニティのベンチマーク</h3>
+      <div class="desc">公開数値の多くは <b>GDV（販売総額）</b> であり建設費ではない。建設費は通常 GDV の 30〜45%。</div>
+    </div>
+    <div class="comm-grid">
+      <div class="comm">
+        <div class="name">DAMAC Lagoons <span class="flag flag-cost">建設契約</span></div>
+        <div class="dev">DAMAC · 185-418 ha</div>
+        <div class="stat"><span>建設契約額</span><b>AED 7.0 Bn</b></div>
+        <div class="stat"><span>うちヴィラ建設</span><b>AED 5.6 Bn+</b></div>
+        <div class="stat"><span>逆算可能</span><b>○</b></div>
+      </div>
+      <div class="comm">
+        <div class="name">Sobha Hartland II <span class="flag flag-gdv">GDV</span></div>
+        <div class="dev">Sobha Realty · 74 ha</div>
+        <div class="stat"><span>GDV</span><b>AED 55.0 Bn</b></div>
+        <div class="stat"><span>建設費</span><b>非公開</b></div>
+      </div>
+      <div class="comm">
+        <div class="name">Tilal Al Ghaf <span class="flag flag-mix">混合</span></div>
+        <div class="dev">Majid Al Futtaim · 300 ha</div>
+        <div class="stat"><span>投資総額</span><b>AED 14.0 Bn+</b></div>
+        <div class="stat"><span>ラグーン</span><b>70,000 m²</b></div>
+        <div class="stat"><span>白砂ビーチ</span><b>400 m</b></div>
+      </div>
+      <div class="comm">
+        <div class="name">The Oasis by Emaar <span class="flag flag-gdv">GDV</span></div>
+        <div class="dev">Emaar · 940 ha</div>
+        <div class="stat"><span>GDV</span><b>AED 73.4 Bn</b></div>
+        <div class="stat"><span>水路・公園比率</span><b>25%</b></div>
+      </div>
+      <div class="comm">
+        <div class="name">Arabian Ranches III <span class="flag flag-mix">混合</span></div>
+        <div class="dev">Emaar · 306 ha</div>
+        <div class="stat"><span>開発総額</span><b>AED 15.0 Bn</b></div>
+        <div class="stat"><span>セントラルパーク</span><b>30,000 m²</b></div>
+      </div>
+      <div class="comm">
+        <div class="name">The Valley <span class="flag flag-mix">混合</span></div>
+        <div class="dev">Emaar · 200 ha</div>
+        <div class="stat"><span>開発総額</span><b>AED 12.0 Bn</b></div>
+        <div class="stat"><span>人工ビーチ</span><b>47,000 m²</b></div>
+      </div>
+      <div class="comm">
+        <div class="name">District One (MBR City) <span class="flag flag-gdv">GDV</span></div>
+        <div class="dev">Meydan · 501 ha</div>
+        <div class="stat"><span>GDV</span><b>AED 35.0 Bn</b></div>
+        <div class="stat"><span>クリスタルラグーン</span><b>世界最大 7km</b></div>
+      </div>
+      <div class="comm">
+        <div class="name">Palm Jebel Ali <span class="flag flag-mix">インフラ</span></div>
+        <div class="dev">Nakheel · 1,340 ha</div>
+        <div class="stat"><span>総投資</span><b>AED 35.0 Bn+</b></div>
+        <div class="stat"><span>ヴィラ544戸建設のみ</span><b>AED 35億</b></div>
+        <div class="stat"><span>1戸あたり</span><b>約 AED 640万</b></div>
+      </div>
+      <div class="comm">
+        <div class="name">Dubai Hills Estate <span class="flag flag-gdv">GDV</span></div>
+        <div class="dev">Emaar / Meraas · 1,100 ha</div>
+        <div class="stat"><span>GDV</span><b>AED 40.0 Bn</b></div>
+        <div class="stat"><span>ゴルフコース</span><b>120万 m²</b></div>
+      </div>
+      <div class="comm">
+        <div class="name">DAMAC Hills 1 &amp; 2 <span class="flag flag-mix">混合</span></div>
+        <div class="dev">DAMAC · 900 ha</div>
+        <div class="stat"><span>開発総額</span><b>AED 30.0 Bn</b></div>
+        <div class="stat"><span>特徴</span><b>ゴルフ・スポーツ・水</b></div>
+      </div>
+    </div>
+
+    <div class="note">
+      ⚠ <strong>GDV ≠ 建設費：</strong>
+      Sobha Hartland II（55B）、The Oasis（73.4B）、District One（35B）、Dubai Hills（40B）はすべて <b>販売総額</b>。
+      建設費として割り戻すと過大評価になる。建設契約ベースで公開されているのは DAMAC Lagoons（7B）程度。
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">
+      <span class="num">03</span><h3>為替前提</h3>
     </div>
     <div class="card">
-      <div class="fx-grid">
+      <div class="fx">
         <div class="fx-cell"><div class="pair">USD / AED</div><div class="val">3.6725</div></div>
         <div class="fx-cell"><div class="pair">USD / JPY</div><div class="val">155.0</div></div>
         <div class="fx-cell"><div class="pair">AED / JPY</div><div class="val">42.21</div></div>
         <div class="fx-cell"><div class="pair">1 坪 / m²</div><div class="val">3.3058</div></div>
       </div>
-      <p style="font-size:11.5px;color:var(--mid);margin-top:14px;line-height:1.7">
-        AED/USDはUAE中央銀行の固定ペッグ、USD/JPYはリサーチ実施時点のスポットレート。
-        為替変動リスクは <a href="#risk" style="color:var(--med);font-weight:700">セクション09</a> で扱う。
-      </p>
     </div>
   </section>
 
-  <!-- BENCHMARK -->
-  <section id="benchmark">
-    <div class="sec-head">
-      <span class="num">02</span><h3>建築コスト・ベンチマーク（1平米あたり）</h3>
-      <div class="desc">用途別 × グレード別マトリクス。<b>Shell &amp; Core + 標準MEP + 内装仕上げ</b>を含む。FF&amp;E・OS&amp;E・外構・設計監理費・許認可・VATは別建て。</div>
+  <section>
+    <div class="sec-title">
+      <span class="num">04</span><h3>出典</h3>
     </div>
-
     <div class="card">
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th rowspan="2" style="vertical-align:bottom">用途</th>
-              <th class="center" colspan="3">Ultra-Premium</th>
-              <th class="center" colspan="3">Premium</th>
-              <th class="center" colspan="3">Mid</th>
-              <th class="center" colspan="3">Affordable</th>
-            </tr>
-            <tr>
-              <th class="right">AED</th><th class="right">USD</th><th class="right">JPY</th>
-              <th class="right">AED</th><th class="right">USD</th><th class="right">JPY</th>
-              <th class="right">AED</th><th class="right">USD</th><th class="right">JPY</th>
-              <th class="right">AED</th><th class="right">USD</th><th class="right">JPY</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="use">Luxury Villa</td>
-              <td class="right cur-aed">18-31k</td><td class="right">4.9-8.4k</td><td class="right">76-131万</td>
-              <td class="right cur-aed">8.4-18.2k</td><td class="right">2.3-5.0k</td><td class="right">36-77万</td>
-              <td class="right cur-aed">4.9-8.5k</td><td class="right">1.3-2.3k</td><td class="right">21-36万</td>
-              <td class="right cur-aed">4.0-5.0k</td><td class="right">1.1-1.4k</td><td class="right">17-21万</td>
-            </tr>
-            <tr>
-              <td class="use">Townhouse</td>
-              <td class="right cur-aed">9-12k</td><td class="right">2.5-3.3k</td><td class="right">38-51万</td>
-              <td class="right cur-aed">6-8.5k</td><td class="right">1.6-2.3k</td><td class="right">25-36万</td>
-              <td class="right cur-aed">4.3-6.0k</td><td class="right">1.2-1.6k</td><td class="right">18-25万</td>
-              <td class="right cur-aed">3.5-4.5k</td><td class="right">0.95-1.2k</td><td class="right">15-19万</td>
-            </tr>
-            <tr>
-              <td class="use">Low-rise (G+4)</td>
-              <td class="right cur-aed">8-11k</td><td class="right">2.2-3.0k</td><td class="right">34-46万</td>
-              <td class="right cur-aed">6-8k</td><td class="right">1.6-2.2k</td><td class="right">25-34万</td>
-              <td class="right cur-aed">4.8-6.0k</td><td class="right">1.3-1.6k</td><td class="right">20-25万</td>
-              <td class="right cur-aed">4.2-4.8k</td><td class="right">1.1-1.3k</td><td class="right">18-20万</td>
-            </tr>
-            <tr>
-              <td class="use">Mid-rise (G+10)</td>
-              <td class="right cur-aed">9.5-13k</td><td class="right">2.6-3.5k</td><td class="right">40-55万</td>
-              <td class="right cur-aed">7.2-9.5k</td><td class="right">2.0-2.6k</td><td class="right">30-40万</td>
-              <td class="right cur-aed">5.5-7.2k</td><td class="right">1.5-2.0k</td><td class="right">23-30万</td>
-              <td class="right cur-aed">4.5-5.5k</td><td class="right">1.2-1.5k</td><td class="right">19-23万</td>
-            </tr>
-            <tr>
-              <td class="use">High-rise (G+20+)</td>
-              <td class="right cur-aed">11-15k</td><td class="right">3.0-4.1k</td><td class="right">46-63万</td>
-              <td class="right cur-aed">9.7-11k</td><td class="right">2.6-3.0k</td><td class="right">41-46万</td>
-              <td class="right cur-aed">7.1-9.7k</td><td class="right">1.9-2.6k</td><td class="right">30-41万</td>
-              <td class="right cur-aed">5.8-7.1k</td><td class="right">1.6-1.9k</td><td class="right">24-30万</td>
-            </tr>
-            <tr>
-              <td class="use">5★ Hotel / Resort</td>
-              <td class="right cur-aed">17.5-22k</td><td class="right">4.8-6.0k</td><td class="right">74-93万</td>
-              <td class="right cur-aed">12-17.5k</td><td class="right">3.3-4.8k</td><td class="right">51-74万</td>
-              <td class="right cur-aed">8.9-12.2k</td><td class="right">2.4-3.3k</td><td class="right">37-51万</td>
-              <td class="right cur-aed">7.0-9.5k</td><td class="right">1.9-2.6k</td><td class="right">30-40万</td>
-            </tr>
-            <tr style="background:#FFF8E0!important">
-              <td class="use" style="color:var(--gold-dk)">Wellness / Spa ⭐</td>
-              <td class="right cur-aed">18.5-25k</td><td class="right">5.0-6.8k</td><td class="right">78-106万</td>
-              <td class="right cur-aed">12.2-18.5k</td><td class="right">3.3-5.0k</td><td class="right">52-78万</td>
-              <td class="right cur-aed">10-12.3k</td><td class="right">2.7-3.3k</td><td class="right">42-52万</td>
-              <td class="right cur-aed">7.5-10.6k</td><td class="right">2.0-2.9k</td><td class="right">32-45万</td>
-            </tr>
-            <tr>
-              <td class="use">Clubhouse / Amenity</td>
-              <td class="right cur-aed">15-20k</td><td class="right">4.1-5.4k</td><td class="right">63-84万</td>
-              <td class="right cur-aed">10.6-15k</td><td class="right">2.9-4.1k</td><td class="right">45-63万</td>
-              <td class="right cur-aed">7.5-10.6k</td><td class="right">2.0-2.9k</td><td class="right">32-45万</td>
-              <td class="right cur-aed">6.1-7.6k</td><td class="right">1.7-2.1k</td><td class="right">26-32万</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:11px;color:var(--mid);margin-top:8px;line-height:1.6">
-        ※ 単価はAED/m²、USD/m²、JPY/m²。「k」は千単位（例: 18-31k = AED 18,000〜31,000）。
-        AYUVA該当行（Wellness/Spa）をハイライト。出典: Stonehaven 2025 / Turner &amp; Townsend GCMI 2025 / Arcadis ICC 2024。
-      </p>
-    </div>
-
-    <div class="callout">
-      <strong>AYUVAの位置取り：</strong>
-      バンブー基調デザイン × 高級フィットネス × スパ複合のため、単純な「ジム」単価ではなく
-      <b>Premium〜Ultra-Premium のWellness/Spa</b>（AED 12,200〜25,000/m²）で見積もるのが市場実態に整合。
-    </div>
-  </section>
-
-  <!-- BREAKDOWN -->
-  <section id="breakdown">
-    <div class="sec-head">
-      <span class="num">03</span><h3>コスト内訳構成（Premium Wellness）</h3>
-      <div class="desc">Stonehaven 2025の Luxury Villa elemental split をベースに、ウェルネス用途特性（MEP・スパ設備・FF&amp;E増加）を補正。</div>
-    </div>
-
-    <div class="card">
-      <h4>項目別コスト構成比 <span class="tag">PREMIUM SCENARIO</span></h4>
-      <div class="bd">
-        <div class="bd-row"><div class="bd-label">Substructure（基礎・杭）</div><div class="bd-bar-bg"><div class="bd-bar" style="width:8%"></div></div><div class="bd-amt">8%</div></div>
-        <div class="bd-row"><div class="bd-label">Superstructure & Façade</div><div class="bd-bar-bg"><div class="bd-bar" style="width:27%"></div></div><div class="bd-amt">27%</div></div>
-        <div class="bd-row"><div class="bd-label">Internal Finishes</div><div class="bd-bar-bg"><div class="bd-bar" style="width:22%"></div></div><div class="bd-amt">22%</div></div>
-        <div class="bd-row"><div class="bd-label">MEP（高度空調・ろ過・防湿）</div><div class="bd-bar-bg"><div class="bd-bar" style="width:25%;background:linear-gradient(90deg,#B8963E,#8C6F26)"></div></div><div class="bd-amt">25%</div></div>
-        <div class="bd-row"><div class="bd-label">FF&E / Pool / Spa設備</div><div class="bd-bar-bg"><div class="bd-bar" style="width:10%"></div></div><div class="bd-amt">10%</div></div>
-        <div class="bd-row"><div class="bd-label">External Works / Landscape</div><div class="bd-bar-bg"><div class="bd-bar" style="width:3%"></div></div><div class="bd-amt">3%</div></div>
-        <div class="bd-row"><div class="bd-label">Professional & Authority Fees</div><div class="bd-bar-bg"><div class="bd-bar" style="width:5%"></div></div><div class="bd-amt">5%</div></div>
-      </div>
-
-      <div class="callout warn" style="margin-top:18px">
-        <strong>ウェルネス施設の特異性：</strong>
-        通常の住宅・商業施設ではMEPは14%程度だが、サウナ・ハマム・コールドプランジ等から発生する湿気と熱を処理するため、
-        二重熱交換器（Double Heat Wheels）と高度除湿システムが必須となり、<b>MEPが25〜35%</b>まで膨張する。
-        この比率を見落とすと予算が15〜20%超過するリスク。
-      </div>
-    </div>
-  </section>
-
-  <!-- COMMUNITY -->
-  <section id="community">
-    <div class="sec-head">
-      <span class="num">04</span><h3>ドバイ有名コミュニティの実例ベンチマーク</h3>
-      <div class="desc">公開される多くの数値は「<b>GDV（販売総額・Gross Development Value）</b>」であり、建設費ではない。本表ではフラグで明示的に分離。</div>
-    </div>
-
-    <div class="card">
-      <div class="callout danger" style="margin-bottom:16px">
-        <strong>⚠ GDV ≠ Construction Cost：</strong>
-        Sobha Hartland II の AED 55B、The Oasis の AED 73.4B、Dubai Hills Estate の AED 40B などは<b>販売総額</b>であり、建設費ではない。
-        建設費は通常 GDVの 30〜45% 程度。逆算には注意が必要。
-      </div>
-
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>コミュニティ</th>
-              <th>開発業者</th>
-              <th class="right">公開数値</th>
-              <th>区分</th>
-              <th class="right">敷地</th>
-              <th>特徴・コメント</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="use">DAMAC Lagoons</td>
-              <td>DAMAC</td>
-              <td class="right cur-aed">7.0 Bn (契約)<br><span class="cur-jpy">≈ 295億円</span></td>
-              <td><span class="flag-cost">建設契約</span></td>
-              <td class="right">185-418 ha</td>
-              <td>ヴィラ建設 AED 5.6B+ の発注済契約。<b>逆算可能</b>な数少ない事例。</td>
-            </tr>
-            <tr>
-              <td class="use">Sobha Hartland II</td>
-              <td>Sobha Realty</td>
-              <td class="right cur-aed">55.0 Bn<br><span class="cur-jpy">≈ 2.32兆円</span></td>
-              <td><span class="flag-gdv">GDV</span></td>
-              <td class="right">74 ha</td>
-              <td>5-6BRラグジュアリーヴィラ主体。<b>建設費は非公開</b>、GDV逆算は危険。</td>
-            </tr>
-            <tr>
-              <td class="use">Tilal Al Ghaf</td>
-              <td>Majid Al Futtaim</td>
-              <td class="right cur-aed">14.0 Bn+<br><span class="cur-jpy">≈ 591億円</span></td>
-              <td><span class="flag-mix">混合</span></td>
-              <td class="right">300 ha</td>
-              <td>70,000m²ラグーン + 400m白砂ビーチ。WELL認証セールスセンター。</td>
-            </tr>
-            <tr>
-              <td class="use">The Oasis by Emaar</td>
-              <td>Emaar</td>
-              <td class="right cur-aed">73.4 Bn<br><span class="cur-jpy">≈ 3.10兆円</span></td>
-              <td><span class="flag-gdv">GDV</span></td>
-              <td class="right">940 ha</td>
-              <td>敷地25%を水路・公園に。スーパーラグジュアリー特化。</td>
-            </tr>
-            <tr>
-              <td class="use">Arabian Ranches III</td>
-              <td>Emaar</td>
-              <td class="right cur-aed">15.0 Bn<br><span class="cur-jpy">≈ 633億円</span></td>
-              <td><span class="flag-mix">混合</span></td>
-              <td class="right">306 ha</td>
-              <td>30,000m²のセントラルパーク、流れるプール、家族向け。</td>
-            </tr>
-            <tr>
-              <td class="use">The Valley by Emaar</td>
-              <td>Emaar</td>
-              <td class="right cur-aed">12.0 Bn<br><span class="cur-jpy">≈ 506億円</span></td>
-              <td><span class="flag-mix">混合</span></td>
-              <td class="right">200 ha</td>
-              <td>32,000m²タウンセンター、47,000m²人工ビーチ。</td>
-            </tr>
-            <tr>
-              <td class="use">District One (MBR City)</td>
-              <td>Meydan</td>
-              <td class="right cur-aed">35.0 Bn<br><span class="cur-jpy">≈ 1.48兆円</span></td>
-              <td><span class="flag-gdv">GDV</span></td>
-              <td class="right">501 ha</td>
-              <td>世界最大7kmクリスタルラグーン特許技術。維持費が高額。</td>
-            </tr>
-            <tr>
-              <td class="use">Palm Jebel Ali</td>
-              <td>Nakheel</td>
-              <td class="right cur-aed">35.0 Bn+<br><span class="cur-jpy">≈ 1.48兆円</span></td>
-              <td><span class="flag-mix">インフラ主体</span></td>
-              <td class="right">1,340 ha</td>
-              <td>ヴィラ544戸建設のみで AED 35億（約640万AED/戸）。海洋土木が先行。</td>
-            </tr>
-            <tr>
-              <td class="use">Dubai Hills Estate</td>
-              <td>Emaar / Meraas</td>
-              <td class="right cur-aed">40.0 Bn<br><span class="cur-jpy">≈ 1.69兆円</span></td>
-              <td><span class="flag-gdv">GDV</span></td>
-              <td class="right">1,100 ha</td>
-              <td>120万m²の18ホールチャンピオンシップゴルフコース。</td>
-            </tr>
-            <tr>
-              <td class="use">DAMAC Hills 1 & 2</td>
-              <td>DAMAC</td>
-              <td class="right cur-aed">30.0 Bn<br><span class="cur-jpy">≈ 1.27兆円</span></td>
-              <td><span class="flag-mix">混合</span></td>
-              <td class="right">900 ha</td>
-              <td>ゴルフコース・スポーツ/ウォータータウンを敷地内分散配置。</td>
-            </tr>
-            <tr>
-              <td class="use">Expo City Dubai (Sidr)</td>
-              <td>Dubai Gov</td>
-              <td class="right cur-aed">243 Mn<br><span class="cur-jpy">≈ 102億円</span></td>
-              <td><span class="flag-cost">建設費</span></td>
-              <td class="right">350 ha (全体)</td>
-              <td>万博既存インフラ活用。<b>AED 2,240/m²</b> という極めて効率的単価。</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="callout">
-        <strong>AYUVAへの示唆：</strong>
-        現在のドバイは「低密度・高付加価値」（The Oasis、Tilal Al Ghaf型）にシフト。
-        AYUVAの2ha敷地に36,000m²延床を確保するモデルは、広大な自然環境とウェルネス施設を両立しつつ、
-        収益性を確保する設計として市場トレンドに合致する。
-      </div>
-    </div>
-  </section>
-
-  <!-- WELLNESS -->
-  <section id="wellness">
-    <div class="sec-head">
-      <span class="num">05</span><h3>ウェルネス・スパ施設の特殊コスト</h3>
-      <div class="desc">標準的な商業施設・住居とは根本的に異なる特殊コスト構造。スパ設備の単品単価とバンブー素材プレミアムを明示。</div>
-    </div>
-
-    <div class="card">
-      <h4>設備別コスト</h4>
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>設備項目</th>
-              <th class="right">AED</th>
-              <th class="right">USD</th>
-              <th class="right">JPY</th>
-              <th>主要コストドライバー</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="use">インフィニティプール（温度管理・ろ過込）</td>
-              <td class="right cur-aed">250-500k/ユニット</td>
-              <td class="right">68-136k</td>
-              <td class="right">1,055-2,110万</td>
-              <td>オーバーフローエッジ構造、塩水塩素化、チラー+ヒートポンプ</td>
-            </tr>
-            <tr>
-              <td class="use">コールドプランジ</td>
-              <td class="right cur-aed">80-120k/ユニット</td>
-              <td class="right">22-33k</td>
-              <td class="right">337-506万</td>
-              <td>常時10°C前後、独立型チラー、高断熱防水</td>
-            </tr>
-            <tr>
-              <td class="use">サウナ・ハマム（商業用プロ仕様）</td>
-              <td class="right cur-aed">100-500k/ユニット</td>
-              <td class="right">27-136k</td>
-              <td class="right">422万-2,110万</td>
-              <td>沿岸高湿度下での木材劣化対策、FIRパネル、天然大理石</td>
-            </tr>
-            <tr>
-              <td class="use">スパトリートメントルーム</td>
-              <td class="right cur-aed">12,000-18,000/m²</td>
-              <td class="right">3.3-4.9k</td>
-              <td class="right">50-75万</td>
-              <td>完全防水、NR35以下防音、DALIサーカディアン調光</td>
-            </tr>
-            <tr>
-              <td class="use">ヨガ・ピラティススタジオ</td>
-              <td class="right cur-aed">6,000-9,000/m²</td>
-              <td class="right">1.6-2.5k</td>
-              <td class="right">25-38万</td>
-              <td>無垢材衝撃吸収床、大型鏡面壁、リフォーマー対応床補強</td>
-            </tr>
-            <tr>
-              <td class="use">高級素材プレミアム（材料費のみ）</td>
-              <td class="right cur-aed">+400-800/m²</td>
-              <td class="right">+108-217</td>
-              <td class="right">+1.6-3.3万</td>
-              <td>トラバーチン、自然石、ガラスモザイク。熟練工確保が必須</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card" style="border-left:4px solid var(--gold)">
-      <h4>🎋 バンブー素材の中東利用 — コスト・規制ハードル</h4>
-      <p>
-        バンブーは持続可能性とデザイン性で革新的だが、ドバイ導入には<b>調達・環境耐性・法規制</b>の3ハードルが存在し、多大なプレミアムが発生する。
-      </p>
-
-      <div class="compare" style="grid-template-columns:1fr 1fr 1fr">
-        <div class="compare-card" style="border-top:3px solid var(--gold)">
-          <h5>① 調達・特殊処理</h5>
-          <div class="compare-row"><span>原産地（インドネシア等）</span><b>USD 100-330/m²</b></div>
-          <div class="compare-row"><span>UAE全量輸入</span><b>+輸送・保険</b></div>
-          <div class="compare-row"><span>含水率調整処理</span><b>必須</b></div>
-          <div class="compare-row"><span>防虫・防腐処理</span><b>必須</b></div>
-        </div>
-        <div class="compare-card" style="border-top:3px solid var(--warn)">
-          <h5>② Civil Defense承認</h5>
-          <div class="compare-row"><span>耐火コーティング</span><b>必須</b></div>
-          <div class="compare-row"><span>第三者実験証明</span><b>必須</b></div>
-          <div class="compare-row"><span>ピアレビュー</span><b>必須</b></div>
-          <div class="compare-row"><span>コンサル費用</span><b>大幅増</b></div>
-        </div>
-        <div class="compare-card" style="border-top:3px solid var(--danger)">
-          <h5>③ コストプレミアム</h5>
-          <div class="compare-row"><span>標準RC比</span><b style="color:var(--danger);font-size:14px">+40〜60%</b></div>
-          <div class="compare-row"><span>工期延長リスク</span><b>あり</b></div>
-          <div class="compare-row"><span>代替材切替リスク</span><b>あり</b></div>
-          <div class="compare-row"><span>初期予算バッファ</span><b>+10-15%</b></div>
-        </div>
-      </div>
-
-      <div class="callout warn">
-        <strong>戦略提案：</strong>
-        構造材としてのバンブー使用は規制ハードルが高すぎる。<b>意匠材・日除け・内装・ランドスケープ要素</b>として扱い、
-        構造はRC/鉄骨で組む前提が現実的。それでも10-15%のプレミアムは必要。
-      </div>
-    </div>
-  </section>
-
-  <!-- REGULATION -->
-  <section id="regulation">
-    <div class="sec-head">
-      <span class="num">06</span><h3>規制・許認可コスト（ドバイ特有）</h3>
-      <div class="desc">「隠れたコスト」とも呼ばれる予算超過の主因。総工費の<b>4〜5%</b>を許認可・コンサルタント費用バッファとして確保すべき。</div>
-    </div>
-
-    <div class="card">
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr><th>機関・項目</th><th class="right">料金</th><th>備考</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="use">Dubai Municipality (DM) 建築許可</td>
-              <td class="right cur-aed">AED 1.00/sq ft<br><span class="cur-jpy">≒ AED 10.76/m²</span></td>
-              <td>BUA基準。最低 AED 200。改修・追加工事の都度発生。</td>
-            </tr>
-            <tr>
-              <td class="use">Trakhees / DDA</td>
-              <td class="right cur-aed">AED 1.00/sq ft<br>+構造変更4-15k</td>
-              <td>フリーゾーン管轄の場合DMの代わりに適用。通常DMより高額。</td>
-            </tr>
-            <tr>
-              <td class="use">Dubai Civil Defense (DCD)</td>
-              <td class="right cur-aed">AED 1,000/図面<br>AED 500-1,000/検査</td>
-              <td>スパ・サウナ・キッチン等の湿式・熱源施設は厳格審査。システム毎課金。</td>
-            </tr>
-            <tr>
-              <td class="use">Green Building / Al Sa'fat</td>
-              <td class="right cur-aed">建設費の +2〜5%</td>
-              <td>断熱・省エネ・水循環基準。ウェルネス施設のブランディング上必須。</td>
-            </tr>
-            <tr>
-              <td class="use">DEWA インフラ接続</td>
-              <td class="right cur-aed">AED 200-400/m²</td>
-              <td>接続kW基準のスラブ料金。ウェルネス高負荷で接続料が跳ね上がる。</td>
-            </tr>
-            <tr>
-              <td class="use">Professional Fees（設計監理）</td>
-              <td class="right cur-aed">建設費の 5〜10%</td>
-              <td>ウェルネスは音響・照明・スパ専門コンサル起用が必須でレンジ上振れ。</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="callout">
-        <strong>実質負担：</strong>
-        DMの基本料金にDCD承認、保健局Food Safety、DEWA大容量接続料、構造コンサル費が重なり、
-        実質的な許認可コストは基本料の<b>5〜10倍</b>に膨れ上がるのが一般的。
-      </div>
-    </div>
-  </section>
-
-  <!-- AYUVA -->
-  <section id="ayuva">
-    <div class="sec-head">
-      <span class="num">07</span><h3>AYUVA プロジェクト試算</h3>
-      <div class="desc">3シナリオによる総建設コスト試算。投資家資料への提示は <b>Premium = AED 666M / JPY 281億</b> を Base Case として推奨。</div>
-    </div>
-
-    <div class="card">
-      <h4>前提条件</h4>
-      <div class="specs">
-        <div class="spec"><div class="lbl">敷地面積</div><div class="val">2.0 ha</div><div class="sub">20,000 m²</div></div>
-        <div class="spec"><div class="lbl">建蔽率</div><div class="val">60%</div><div class="sub">建築面積 1.2 ha</div></div>
-        <div class="spec"><div class="lbl">階数</div><div class="val">3階建</div><div class="sub">3 floors</div></div>
-        <div class="spec"><div class="lbl">延床（GFA）</div><div class="val">36,000 m²</div><div class="sub">≒ 10,890 坪</div></div>
-      </div>
-    </div>
-
-    <h4 style="font-size:15px;color:var(--forest);font-weight:800;margin:24px 0 8px;letter-spacing:.5px">3シナリオ総建築コスト</h4>
-
-    <div class="scen-grid">
-      <div class="scen">
-        <div class="grade">FLOOR / 楽観</div>
-        <div class="name">Mid</div>
-        <div class="rate">AED 12,000/m² × 36,000m²</div>
-        <div class="total-aed">AED 432M</div>
-        <div class="total-usd">USD 117.6M</div>
-        <div class="total-jpy">JPY 182.3億</div>
-        <div class="row"><span>1ha あたり</span><b>AED 216M</b></div>
-        <div class="row"><span>坪単価</span><b>約167万円/坪</b></div>
-        <div class="desc">都市型の独立系高級フィットネス・ジム級。バンブー・水景・高度MEPを最小限で設計した場合の下限値。</div>
-      </div>
-
-      <div class="scen base">
-        <div class="grade">RECOMMENDED BASE CASE</div>
-        <div class="name">Premium <span class="recommend">推奨</span></div>
-        <div class="rate">AED 18,500/m² × 36,000m²</div>
-        <div class="total-aed">AED 666M</div>
-        <div class="total-usd">USD 181.3M</div>
-        <div class="total-jpy">JPY 281.0億</div>
-        <div class="row"><span>1ha あたり</span><b>AED 333M</b></div>
-        <div class="row"><span>坪単価</span><b>約258万円/坪</b></div>
-        <div class="desc">5★リゾート併設のシグネチャースパ級。バンブー意匠・水景・スパ複合を含む現実的レンジ。</div>
-      </div>
-
-      <div class="scen ultra">
-        <div class="grade">CONSERVATIVE HIGH</div>
-        <div class="name">Ultra-Premium</div>
-        <div class="rate">AED 25,000/m² × 36,000m²</div>
-        <div class="total-aed">AED 900M</div>
-        <div class="total-usd">USD 245.1M</div>
-        <div class="total-jpy">JPY 380.0億</div>
-        <div class="row"><span>1ha あたり</span><b>AED 450M</b></div>
-        <div class="row"><span>坪単価</span><b>約349万円/坪</b></div>
-        <div class="desc">世界最高峰のデスティネーションスパ級。Six Senses / Talise / One&Only水準。為替・資材・規制の上振れシナリオ。</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>Premium Base Case コスト内訳（AED 666M / JPY 281億）</h4>
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>項目</th>
-              <th class="right">構成比</th>
-              <th class="right">AED</th>
-              <th class="right">USD</th>
-              <th class="right">JPY</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="use">Substructure（基礎）</td><td class="right">8%</td><td class="right cur-aed">53.3M</td><td class="right">14.5M</td><td class="right">22.4億</td></tr>
-            <tr><td class="use">Superstructure & Façade（躯体・バンブー外装）</td><td class="right">27%</td><td class="right cur-aed">179.8M</td><td class="right">49.0M</td><td class="right">75.8億</td></tr>
-            <tr><td class="use">Internal Finishes（内装仕上）</td><td class="right">22%</td><td class="right cur-aed">146.5M</td><td class="right">39.9M</td><td class="right">61.8億</td></tr>
-            <tr><td class="use">MEP（空調・電気・ろ過・防湿）</td><td class="right">25%</td><td class="right cur-aed">166.5M</td><td class="right">45.3M</td><td class="right">70.2億</td></tr>
-            <tr><td class="use">FF&E / Pool / Spa設備</td><td class="right">10%</td><td class="right cur-aed">66.6M</td><td class="right">18.1M</td><td class="right">28.1億</td></tr>
-            <tr><td class="use">External Works / Landscape</td><td class="right">3%</td><td class="right cur-aed">20.0M</td><td class="right">5.4M</td><td class="right">8.4億</td></tr>
-            <tr><td class="use">Professional & Authority Fees</td><td class="right">5%</td><td class="right cur-aed">33.3M</td><td class="right">9.1M</td><td class="right">14.0億</td></tr>
-            <tr style="background:var(--forest)!important;color:var(--white)!important">
-              <td class="use" style="color:var(--gold)!important;font-weight:800">合計</td>
-              <td class="right" style="color:var(--white)!important;font-weight:800">100%</td>
-              <td class="right" style="color:var(--gold)!important;font-weight:800">666.0M</td>
-              <td class="right" style="color:var(--white)!important;font-weight:800">181.3M</td>
-              <td class="right" style="color:var(--white)!important;font-weight:800">281.0億</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>1ヘクタールあたり投資密度（Capital Density per Hectare）</h4>
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr><th>シナリオ</th><th class="right">AED/ha</th><th class="right">USD/ha</th><th class="right">JPY/ha</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="use tier-mid">Mid</td><td class="right cur-aed">216M</td><td class="right">58.8M</td><td class="right">91.2億</td></tr>
-            <tr><td class="use tier-prem">Premium（Base）</td><td class="right cur-aed">333M</td><td class="right">90.7M</td><td class="right">140.5億</td></tr>
-            <tr><td class="use tier-ultra">Ultra-Premium</td><td class="right cur-aed">450M</td><td class="right">122.5M</td><td class="right">189.9億</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:12px;color:var(--mid);margin-top:10px;line-height:1.7">
-        参考：The Oasis（推定 78M AED/ha）、Tilal Al Ghaf（推定 47M AED/ha）。
-        AYUVAは小規模敷地に高密度ウェルネス機能を集積するため、コミュニティ開発より単価密度が高い。
-      </p>
-    </div>
-  </section>
-
-  <!-- JAPAN -->
-  <section id="japan">
-    <div class="sec-head">
-      <span class="num">08</span><h3>日本のハイエンド施設との坪単価比較</h3>
-      <div class="desc">日本側ステークホルダー向けに、AYUVAの単価水準を国内ベンチマークと対比。</div>
-    </div>
-
-    <div class="card">
-      <div class="compare">
-        <div class="compare-card">
-          <h5>🇦🇪 AYUVA Premium（Base Case）</h5>
-          <div class="compare-row"><span>AED/m²</span><b>18,500</b></div>
-          <div class="compare-row"><span>JPY/坪</span><b style="color:var(--green);font-size:14px">約 258万円/坪</b></div>
-          <div class="compare-row"><span>USD/m²</span><b>5,037</b></div>
-          <div class="compare-row"><span>総額</span><b>JPY 281億</b></div>
-        </div>
-        <div class="compare-card">
-          <h5>🇦🇪 AYUVA Ultra-Premium</h5>
-          <div class="compare-row"><span>AED/m²</span><b>25,000</b></div>
-          <div class="compare-row"><span>JPY/坪</span><b style="color:var(--brown);font-size:14px">約 349万円/坪</b></div>
-          <div class="compare-row"><span>USD/m²</span><b>6,807</b></div>
-          <div class="compare-row"><span>総額</span><b>JPY 380億</b></div>
-        </div>
-        <div class="compare-card">
-          <h5>🇯🇵 星のや東京</h5>
-          <div class="compare-row"><span>JPY/坪</span><b>約 250-350万円/坪</b></div>
-          <div class="compare-row"><span>用途</span><b>都市型ラグジュアリーホテル</b></div>
-          <div class="compare-row"><span>特徴</span><b>和風ファサード・特殊内装</b></div>
-          <div class="compare-row"><span>vs AYUVA Premium</span><b style="color:var(--green)">ほぼ同等</b></div>
-        </div>
-        <div class="compare-card">
-          <h5>🇯🇵 アマンレジデンス東京</h5>
-          <div class="compare-row"><span>JPY/坪</span><b>約 400万円超/坪</b></div>
-          <div class="compare-row"><span>用途</span><b>超高級スパ・レジデンス</b></div>
-          <div class="compare-row"><span>特徴</span><b>世界最高峰素材・設計</b></div>
-          <div class="compare-row"><span>vs AYUVA Ultra</span><b style="color:var(--gold-dk)">日本側がやや高い</b></div>
-        </div>
-      </div>
-
-      <div class="callout">
-        <strong>差分分析：</strong>
-        ドバイは南アジア系労働力で躯体工事費が安価。だが <b>(1)</b> 高品質内装材の全量輸入、
-        <b>(2)</b> 砂漠気候下の超高度MEP、<b>(3)</b> バンブー等非標準材の規制対応コストが加算され、
-        最終的な坪単価は<b>「日本の超高級施設と同等〜やや高額」</b>に収斂する。
-      </div>
-    </div>
-  </section>
-
-  <!-- RISK -->
-  <section id="risk">
-    <div class="sec-head">
-      <span class="num">09</span><h3>事業リスク要因と対策</h3>
-      <div class="desc">AYUVA推進における主要リスクと緩和策。投資家資料には必ず併記すべき。</div>
-    </div>
-
-    <div class="risks">
-      <div class="risk">
-        <h5>① バンブー × 法令遵守</h5>
-        <p>UAEに竹構造の大規模前例なし。Dubai Civil Defense (DCD) の防火基準対応で工期遅延・代替材切替リスクが高い。</p>
-        <div class="mit"><b>緩和：</b>初期設計段階からDCD認定の防火コンサル起用。構造材ではなく意匠材としての利用に限定。</div>
-      </div>
-      <div class="risk">
-        <h5>② サプライチェーン × インフレ</h5>
-        <p>紅海危機・ホルムズ海峡の地政学リスクで輸送コスト・保険料高騰。Arcadis・Linesightは2025年も材料費ボラティリティ継続を予測。</p>
-        <div class="mit"><b>緩和：</b>長納期品（Long-lead items）の早期発注（フロントローディング）、価格エスカレーション条項管理。</div>
-      </div>
-      <div class="risk">
-        <h5>③ MEP過負荷 × 高OPEX</h5>
-        <p>ウェルネス施設は通常の2〜3倍のMEP負荷。CAPEXに加えDEWAスラブ料金で運用費が事業収益性を継続圧迫。</p>
-        <div class="mit"><b>緩和：</b>気密・断熱徹底、太陽光発電、熱回収システム導入。Al Sa'fat準拠で長期OPEX低減。</div>
-      </div>
-      <div class="risk">
-        <h5>④ 為替（JPY）変動</h5>
-        <p>USD/JPY が±10円変動するとJPY換算で総額±18億円のブレ。資金調達構造により為替負担者が変わる。</p>
-        <div class="mit"><b>緩和：</b>USD/AED建ての資金調達を主軸、JPY建ては支払サイトに合わせた為替予約でヘッジ。</div>
-      </div>
-      <div class="risk">
-        <h5>⑤ 熟練労働者不足</h5>
-        <p>サウジギガプロジェクト・データセンター開発で域内の熟練エンジニア・職人が逼迫。年5〜10%の労務費上昇。</p>
-        <div class="mit"><b>緩和：</b>主要EPC契約での労務確保条項、複数業者の事前ティアリング、労働者キャンプ確保の明文化。</div>
-      </div>
-      <div class="risk">
-        <h5>⑥ 許認可ボラティリティ</h5>
-        <p>DCD・DM・DEWA・保健局の手戻りで実質許認可コストが基本料の5〜10倍に膨れる事例多数。</p>
-        <div class="mit"><b>緩和：</b>総工費の<b>4〜5%</b>を許認可・コンサルタントバッファとして確保。スパ機能はPre-DCD協議。</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOURCES -->
-  <section id="sources">
-    <div class="sec-head">
-      <span class="num">10</span><h3>情報ソース・引用文献</h3>
-      <div class="desc">3つのDeep Research（Perplexity / ChatGPT / Google）の収集結果を統合。下記は元データの主要引用元。</div>
-    </div>
-
-    <div class="sources">
-      <ul style="list-style:none">
-        <li><b>Turner & Townsend</b> — International Construction Market Survey 2024-2025 / UAE Market Intelligence 2025（コスト順位、TPIインフレ、労働市場）</li>
-        <li><b>Arcadis</b> — International Construction Costs 2025（グローバルコストランキング、ESGインフレ動向）</li>
-        <li><b>AECOM</b> — Middle East Property & Construction Handbook 2024-2025（ラグジュアリー住宅・ホテル分析、サウジ比較）</li>
-        <li><b>JLL</b> — UAE Construction Market Intelligence Q1 2024 / Q4 2025 Market Dynamics（建設インフレ7%、取引動向）</li>
-        <li><b>Linesight</b> — Country Commodity Report APAC & GCC 2025（コモディティ、紅海・ホルムズ地政学）</li>
-        <li><b>Cushman & Wakefield</b> — EMEA Office Fit Out Cost Guide 2025（Fit-out・内装コスト）</li>
-        <li><b>Stonehaven</b> — UAE Construction Cost Benchmarking 2025（ホテル・ヴィラ平米単価、elemental split）</li>
-        <li><b>Emaar Properties</b> Annual Reports & PR — The Oasis、Arabian Ranches III、The Valley、Dubai Hills Estate</li>
-        <li><b>DAMAC Properties</b> Reports — DAMAC Lagoons、DAMAC Hills 1 & 2 契約発注額</li>
-        <li><b>Sobha Realty</b> — Sobha Hartland II 敷地・GDV</li>
-        <li><b>Majid Al Futtaim</b> — Tilal Al Ghaf 投資総額、WELL認証実績</li>
-        <li><b>Nakheel</b> — Palm Jebel Ali ヴィラ建設契約</li>
-        <li><b>Meydan Group</b> — District One / MBR City クリスタルラグーン規模</li>
-        <li><b>UAEローカルベンダー</b> — First Unicorn Interiors、Sauna Dekor等のプール・サウナ・ハマム単価</li>
-        <li><b>バンブー建築データ</b> — Asali Bali等の竹建築単価、耐火処理・許認可コンサル費用</li>
-        <li><b>日本国内比較</b> — Savills Japan、Hotel Investment Media（アマン東京、星のや坪単価）</li>
-        <li><b>許認可情報</b> — Dubai Municipality、DCD、Trakhees、DEWA公開料金体系</li>
+      <ul style="list-style:none;font-size:12.5px;color:var(--mid);line-height:2">
+        <li><b style="color:var(--forest)">Turner &amp; Townsend</b> — International Construction Market Survey 2024-2025</li>
+        <li><b style="color:var(--forest)">Arcadis</b> — International Construction Costs 2025</li>
+        <li><b style="color:var(--forest)">AECOM</b> — Middle East Property &amp; Construction Handbook 2024-2025</li>
+        <li><b style="color:var(--forest)">JLL</b> — UAE Construction Market Intelligence Q4 2025</li>
+        <li><b style="color:var(--forest)">Linesight</b> — Country Commodity Report APAC &amp; GCC 2025</li>
+        <li><b style="color:var(--forest)">Stonehaven</b> — UAE Construction Cost Benchmarking 2025</li>
+        <li><b style="color:var(--forest)">Cushman &amp; Wakefield</b> — EMEA Office Fit Out Cost Guide 2025</li>
+        <li><b style="color:var(--forest)">Emaar / DAMAC / Sobha / Nakheel / Meydan / Majid Al Futtaim</b> — Annual Reports</li>
       </ul>
-    </div>
-
-    <div class="callout warn" style="margin-top:18px">
-      <strong>免責事項：</strong>
-      本レポートは公開情報および業界標準ベンチマークに基づく試算であり、実際の入札価格・契約金額は
-      設計仕様・調達戦略・市況により大きく変動する。実行段階では Dubai 地場の QS（Quantity Surveyor）
-      による Cost Plan Stage A〜D の精緻化が必須。
+      <div class="note" style="margin-top:14px">
+        三角検証：Perplexity · ChatGPT Deep Research · Google Deep Research の3社結果を相互検証し、防御的レンジを採用。
+      </div>
     </div>
   </section>
 
@@ -957,8 +309,8 @@ td.use{font-weight:700;color:var(--forest)}
 
 <footer class="footer">
   <div class="footer-line"></div>
-  <div>AYUVA × DUBAI CONSTRUCTION COST BENCHMARK · 2024-2026</div>
-  <div class="by">Triangulated from Perplexity · ChatGPT · Google Deep Research — 2026.05.06</div>
+  <div>DUBAI CONSTRUCTION COST · PER M² · 2024-2026</div>
+  <div class="by">Triangulated Research — Updated 2026.05.06</div>
 </footer>
 
 </body>
