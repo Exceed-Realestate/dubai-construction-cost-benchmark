@@ -66,6 +66,13 @@ td.use{font-weight:700;color:var(--forest)}
 .comm{background:var(--white);border:1px solid var(--accent);border-left:4px solid var(--gold);border-radius:8px;padding:16px 20px}
 .comm .name{font-size:14px;color:var(--forest);font-weight:800;margin-bottom:4px}
 .comm .dev{font-size:11px;color:var(--mid);letter-spacing:.5px;margin-bottom:10px}
+.comm .est{background:#FFFCF3;border:1px dashed var(--gold);border-radius:6px;padding:9px 12px;margin-bottom:12px}
+.comm .est-row{display:flex;justify-content:space-between;align-items:center}
+.comm .est-lbl{font-size:10px;color:var(--gold-dk);font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.comm .est-val{font-size:14px;color:var(--brown);font-weight:800;font-variant-numeric:tabular-nums}
+.comm .est-sub{font-size:10px;color:var(--mid);margin-top:3px;line-height:1.5}
+.comm.real .est{background:var(--pale-green);border-color:var(--med);border-style:solid}
+.comm.real .est-lbl{color:var(--green)}
 .comm .stat{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-top:1px dashed #EEE}
 .comm .stat:first-of-type{border-top:none}
 .comm .stat b{color:var(--brown);font-weight:700;font-variant-numeric:tabular-nums}
@@ -194,79 +201,143 @@ td.use{font-weight:700;color:var(--forest)}
 
   <section>
     <div class="sec-title">
-      <span class="num">02</span><h3>ドバイ有名コミュニティのベンチマーク</h3>
-      <div class="desc">公開数値の多くは <b>GDV（販売総額）</b> であり建設費ではない。建設費は通常 GDV の 30〜45%。</div>
+      <span class="num">02</span><h3>ドバイ有名コミュニティの 1m² コスト（推定）</h3>
+      <div class="desc">各コミュニティの公開情報から建設費を逆算した推定 1m² コスト。<b>緑枠</b>＝建設契約ベース（高信頼）、<b>金枠</b>＝GDV→建設費換算 + GFA推定（誤差±30%）。</div>
     </div>
+
+    <div class="note" style="margin:0 0 16px;background:#FFFCF3;border-left-color:var(--gold);color:var(--gold-dk)">
+      📐 <strong>計算メソッド：</strong>
+      建設費 ≈ GDV × 30〜45% / GFA推定（敷地面積 × FAR 0.2〜0.5）。
+      DAMAC Lagoons（建設契約 AED 7B 公開）以外は推定値。実数値は QS による Cost Plan で要再算定。
+    </div>
+
     <div class="comm-grid">
-      <div class="comm">
+      <div class="comm real">
         <div class="name">DAMAC Lagoons <span class="flag flag-cost">建設契約</span></div>
         <div class="dev">DAMAC · 185-418 ha</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 5,000-9,500</span></div>
+          <div class="est-sub">USD 1,360-2,590 / 21-40 万円/m² · 建設契約 AED 7B ÷ GFA 約 920,000m²</div>
+        </div>
         <div class="stat"><span>建設契約額</span><b>AED 7.0 Bn</b></div>
         <div class="stat"><span>うちヴィラ建設</span><b>AED 5.6 Bn+</b></div>
-        <div class="stat"><span>逆算可能</span><b>○</b></div>
+        <div class="stat"><span>グレード推定</span><b>Mid - Premium ヴィラ</b></div>
       </div>
+
       <div class="comm">
         <div class="name">Sobha Hartland II <span class="flag flag-gdv">GDV</span></div>
         <div class="dev">Sobha Realty · 74 ha</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 15,000-25,000</span></div>
+          <div class="est-sub">USD 4,080-6,810 / 63-105 万円/m² · GDV 55B × 35% ÷ GFA 約 1,110,000m²（FAR 1.5）</div>
+        </div>
         <div class="stat"><span>GDV</span><b>AED 55.0 Bn</b></div>
         <div class="stat"><span>建設費</span><b>非公開</b></div>
+        <div class="stat"><span>グレード推定</span><b>Premium - Ultra</b></div>
       </div>
+
       <div class="comm">
         <div class="name">Tilal Al Ghaf <span class="flag flag-mix">混合</span></div>
         <div class="dev">Majid Al Futtaim · 300 ha</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 6,000-10,000</span></div>
+          <div class="est-sub">USD 1,630-2,720 / 25-42 万円/m² · 投資 14B × 70% ÷ GFA 約 1,200,000m²</div>
+        </div>
         <div class="stat"><span>投資総額</span><b>AED 14.0 Bn+</b></div>
         <div class="stat"><span>ラグーン</span><b>70,000 m²</b></div>
-        <div class="stat"><span>白砂ビーチ</span><b>400 m</b></div>
+        <div class="stat"><span>グレード推定</span><b>Premium ヴィラ</b></div>
       </div>
+
       <div class="comm">
         <div class="name">The Oasis by Emaar <span class="flag flag-gdv">GDV</span></div>
         <div class="dev">Emaar · 940 ha</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 10,000-15,000</span></div>
+          <div class="est-sub">USD 2,720-4,080 / 42-63 万円/m² · GDV 73.4B × 30% ÷ GFA 約 1,880,000m²（低密度）</div>
+        </div>
         <div class="stat"><span>GDV</span><b>AED 73.4 Bn</b></div>
         <div class="stat"><span>水路・公園比率</span><b>25%</b></div>
+        <div class="stat"><span>グレード推定</span><b>Ultra ヴィラ</b></div>
       </div>
+
       <div class="comm">
         <div class="name">Arabian Ranches III <span class="flag flag-mix">混合</span></div>
         <div class="dev">Emaar · 306 ha</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 5,000-8,000</span></div>
+          <div class="est-sub">USD 1,360-2,180 / 21-34 万円/m² · 投資 15B × 50% ÷ GFA 約 1,220,000m²</div>
+        </div>
         <div class="stat"><span>開発総額</span><b>AED 15.0 Bn</b></div>
         <div class="stat"><span>セントラルパーク</span><b>30,000 m²</b></div>
+        <div class="stat"><span>グレード推定</span><b>Mid - Premium ファミリー</b></div>
       </div>
+
       <div class="comm">
         <div class="name">The Valley <span class="flag flag-mix">混合</span></div>
         <div class="dev">Emaar · 200 ha</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 6,000-10,000</span></div>
+          <div class="est-sub">USD 1,630-2,720 / 25-42 万円/m² · 投資 12B × 50% ÷ GFA 約 700,000m²</div>
+        </div>
         <div class="stat"><span>開発総額</span><b>AED 12.0 Bn</b></div>
         <div class="stat"><span>人工ビーチ</span><b>47,000 m²</b></div>
+        <div class="stat"><span>グレード推定</span><b>Mid - Premium</b></div>
       </div>
+
       <div class="comm">
         <div class="name">District One (MBR City) <span class="flag flag-gdv">GDV</span></div>
         <div class="dev">Meydan · 501 ha</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 9,000-13,000</span></div>
+          <div class="est-sub">USD 2,450-3,540 / 38-55 万円/m² · GDV 35B × 30% ÷ GFA 約 1,000,000m²</div>
+        </div>
         <div class="stat"><span>GDV</span><b>AED 35.0 Bn</b></div>
         <div class="stat"><span>クリスタルラグーン</span><b>世界最大 7km</b></div>
+        <div class="stat"><span>グレード推定</span><b>Premium - Ultra</b></div>
       </div>
-      <div class="comm">
-        <div class="name">Palm Jebel Ali <span class="flag flag-mix">インフラ</span></div>
-        <div class="dev">Nakheel · 1,340 ha</div>
-        <div class="stat"><span>総投資</span><b>AED 35.0 Bn+</b></div>
-        <div class="stat"><span>ヴィラ544戸建設のみ</span><b>AED 35億</b></div>
-        <div class="stat"><span>1戸あたり</span><b>約 AED 640万</b></div>
+
+      <div class="comm real">
+        <div class="name">Palm Jebel Ali ヴィラ <span class="flag flag-cost">建設契約</span></div>
+        <div class="dev">Nakheel · 544戸ヴィラ</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 20,000-32,000</span></div>
+          <div class="est-sub">USD 5,450-8,710 / 84-135 万円/m² · 1戸 AED 64.3M ÷ 平均 2,000-3,200m²</div>
+        </div>
+        <div class="stat"><span>ヴィラ建設契約</span><b>AED 35.0 Bn</b></div>
+        <div class="stat"><span>1戸あたり</span><b>約 AED 64.3 Mn</b></div>
+        <div class="stat"><span>グレード推定</span><b>Ultra ビーチフロント</b></div>
       </div>
+
       <div class="comm">
         <div class="name">Dubai Hills Estate <span class="flag flag-gdv">GDV</span></div>
         <div class="dev">Emaar / Meraas · 1,100 ha</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 3,000-5,000</span></div>
+          <div class="est-sub">USD 820-1,360 / 13-21 万円/m² · GDV 40B × 35% ÷ GFA 約 3,850,000m²（大規模混合）</div>
+        </div>
         <div class="stat"><span>GDV</span><b>AED 40.0 Bn</b></div>
         <div class="stat"><span>ゴルフコース</span><b>120万 m²</b></div>
+        <div class="stat"><span>グレード推定</span><b>Mid 混合（規模効果）</b></div>
       </div>
+
       <div class="comm">
         <div class="name">DAMAC Hills 1 &amp; 2 <span class="flag flag-mix">混合</span></div>
         <div class="dev">DAMAC · 900 ha</div>
+        <div class="est">
+          <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 4,000-6,500</span></div>
+          <div class="est-sub">USD 1,090-1,770 / 17-27 万円/m² · 投資 30B × 45% ÷ GFA 約 2,700,000m²</div>
+        </div>
         <div class="stat"><span>開発総額</span><b>AED 30.0 Bn</b></div>
         <div class="stat"><span>特徴</span><b>ゴルフ・スポーツ・水</b></div>
+        <div class="stat"><span>グレード推定</span><b>Mid ヴィラ</b></div>
       </div>
     </div>
 
     <div class="note">
       ⚠ <strong>GDV ≠ 建設費：</strong>
       Sobha Hartland II（55B）、The Oasis（73.4B）、District One（35B）、Dubai Hills（40B）はすべて <b>販売総額</b>。
-      建設費として割り戻すと過大評価になる。建設契約ベースで公開されているのは DAMAC Lagoons（7B）程度。
+      上記推定 1m² コストは GDV × 30〜45% を建設費とし、敷地 × FAR で GFA を逆算した値。
+      <b>建設契約ベースで公開されているのは DAMAC Lagoons（AED 7B）と Palm Jebel Ali ヴィラ（AED 35B）のみ</b>。
     </div>
   </section>
 
