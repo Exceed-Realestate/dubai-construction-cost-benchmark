@@ -2,7 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1B3A0D">
 <title>ドバイ建築コスト 1平米あたり ベンチマーク</title>
 <style>
 :root{
@@ -12,92 +13,273 @@
   --dark:#2B2B2B;--mid:#666;--light:#999;--accent:#D4DFC8;
   --white:#FFF;--bg:#F7F5F0
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'Helvetica Neue','Hiragino Kaku Gothic ProN',sans-serif;background:var(--bg);color:var(--dark);line-height:1.75;-webkit-font-smoothing:antialiased}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;
+  background:var(--bg);color:var(--dark);line-height:1.7;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility
+}
 
-.hero{background:linear-gradient(180deg,var(--forest) 0%,#143008 100%);color:var(--white);padding:64px 24px;text-align:center;border-bottom:4px solid var(--gold)}
-.hero-inner{max-width:980px;margin:0 auto}
-.hero .label{font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:700;margin-bottom:14px}
-.hero h1{font-size:32px;line-height:1.4;font-weight:800;margin-bottom:14px;letter-spacing:.5px}
-.hero h1 em{color:var(--gold);font-style:normal}
-.hero .lead{font-size:14px;line-height:1.85;color:#D8C99A;max-width:680px;margin:0 auto}
+/* ===== HERO ===== */
+.hero{
+  background:radial-gradient(ellipse at top,#2D5016 0%,var(--forest) 50%,#0d2106 100%);
+  color:var(--white);padding:88px 24px 72px;text-align:center;
+  border-bottom:5px solid var(--gold);position:relative;overflow:hidden
+}
+.hero::before{
+  content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(circle,rgba(184,150,62,.08) 0%,transparent 50%);
+  pointer-events:none
+}
+.hero-inner{max-width:780px;margin:0 auto;position:relative}
+.hero .label{
+  font-size:11px;letter-spacing:5px;color:var(--gold);font-weight:700;
+  margin-bottom:20px;display:inline-block;
+  padding:7px 16px;border:1px solid rgba(184,150,62,.4);border-radius:100px
+}
+.hero h1{
+  font-size:42px;line-height:1.25;font-weight:900;margin-bottom:18px;letter-spacing:-.5px
+}
+.hero h1 em{color:var(--gold);font-style:normal;display:block;font-size:.55em;letter-spacing:8px;margin-top:6px;font-weight:700}
+.hero .lead{font-size:15px;line-height:1.85;color:#D8C99A;max-width:560px;margin:0 auto}
+.hero .lead b{color:var(--gold);font-weight:700}
 
-.headline{padding:48px 24px;background:var(--cream);border-bottom:1px solid var(--accent)}
+/* ===== HEADLINE TIER SECTION ===== */
+.headline{
+  padding:64px 20px 72px;background:var(--cream);
+  border-bottom:1px solid var(--accent)
+}
 .headline-inner{max-width:980px;margin:0 auto}
-.headline-title{text-align:center;margin-bottom:32px}
-.headline-title .top{font-size:11px;letter-spacing:3px;color:var(--gold);font-weight:800}
-.headline-title h2{font-size:24px;color:var(--forest);font-weight:800;margin-top:8px;letter-spacing:.5px}
-.headline-title p{font-size:13px;color:var(--mid);margin-top:8px}
+.headline-title{text-align:center;margin-bottom:36px}
+.headline-title .top{font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:800}
+.headline-title h2{
+  font-size:28px;color:var(--forest);font-weight:900;
+  margin-top:10px;letter-spacing:-.3px;line-height:1.4
+}
+.headline-title p{font-size:13px;color:var(--mid);margin-top:10px;padding:0 12px}
 
-.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.tier{background:var(--white);border-radius:12px;padding:24px 20px;border-top:5px solid var(--med);box-shadow:0 1px 3px rgba(0,0,0,.04);text-align:center}
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tier{
+  background:var(--white);border-radius:18px;padding:30px 22px 28px;
+  border-top:6px solid var(--med);box-shadow:0 2px 8px rgba(0,0,0,.05),0 12px 32px rgba(27,58,13,.04);
+  text-align:center;position:relative;overflow:hidden
+}
+.tier::after{
+  content:"";position:absolute;top:6px;left:0;right:0;height:50px;
+  background:linear-gradient(180deg,rgba(74,124,41,.05),transparent);pointer-events:none
+}
 .tier.t-prem{border-top-color:var(--gold);background:linear-gradient(180deg,#FFFCF3,#FFF)}
+.tier.t-prem::after{background:linear-gradient(180deg,rgba(184,150,62,.08),transparent)}
 .tier.t-ultra{border-top-color:var(--gold-dk);background:linear-gradient(180deg,#FAF5E8,#FFF)}
-.tier .grade{font-size:10px;letter-spacing:2px;color:var(--med);font-weight:800;margin-bottom:6px}
-.tier.t-prem .grade,.tier.t-ultra .grade{color:var(--gold-dk)}
-.tier .name{font-size:18px;color:var(--forest);font-weight:800;margin-bottom:18px;letter-spacing:.3px}
-.tier .aed{font-size:22px;color:var(--brown);font-weight:800;letter-spacing:.5px;margin-bottom:6px;font-variant-numeric:tabular-nums}
-.tier .usd{font-size:13px;color:var(--mid);margin-bottom:4px;font-variant-numeric:tabular-nums}
-.tier .jpy{font-size:13px;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.tier .unit{font-size:10px;color:var(--light);margin-top:8px;letter-spacing:.5px}
+.tier.t-ultra::after{background:linear-gradient(180deg,rgba(140,111,38,.1),transparent)}
+.tier .badge{
+  display:inline-block;font-size:10px;letter-spacing:2.5px;color:var(--med);
+  font-weight:800;background:var(--pale-green);padding:5px 12px;border-radius:100px;margin-bottom:12px
+}
+.tier.t-prem .badge,.tier.t-ultra .badge{color:var(--gold-dk);background:#F5EDD4}
+.tier .name{font-size:20px;color:var(--forest);font-weight:900;margin-bottom:22px;letter-spacing:-.3px}
+.tier .aed{
+  font-size:24px;color:var(--brown);font-weight:900;letter-spacing:-.5px;
+  margin-bottom:8px;font-variant-numeric:tabular-nums;line-height:1.2
+}
+.tier .usd{font-size:13.5px;color:var(--mid);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.tier .jpy{font-size:13.5px;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
+.tier .unit{font-size:10px;color:var(--light);margin-top:14px;letter-spacing:1.5px;font-weight:700}
 
-.container{max-width:980px;margin:0 auto;padding:48px 24px 64px}
-section{margin-bottom:48px}
-.sec-title{margin-bottom:20px}
-.sec-title .num{display:inline-block;background:var(--gold);color:var(--forest);font-size:11px;font-weight:800;padding:3px 10px;border-radius:12px;margin-right:10px;letter-spacing:1px}
-.sec-title h3{display:inline;font-size:20px;color:var(--forest);font-weight:800;letter-spacing:.3px}
-.sec-title .desc{margin-top:8px;color:var(--mid);font-size:13px;line-height:1.7}
+/* ===== CONTAINER ===== */
+.container{max-width:980px;margin:0 auto;padding:64px 24px 72px}
+section{margin-bottom:64px}
+.sec-title{margin-bottom:24px}
+.sec-title .num{
+  display:inline-block;background:var(--gold);color:var(--forest);
+  font-size:11px;font-weight:900;padding:5px 14px;border-radius:100px;margin-right:10px;letter-spacing:1.5px;vertical-align:middle
+}
+.sec-title h3{
+  display:inline;font-size:22px;color:var(--forest);
+  font-weight:900;letter-spacing:-.3px;line-height:1.4
+}
+.sec-title .desc{margin-top:12px;color:var(--mid);font-size:13.5px;line-height:1.75}
 
-.card{background:var(--white);border-radius:12px;border:1px solid var(--accent);padding:24px 26px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.card{
+  background:var(--white);border-radius:16px;border:1px solid var(--accent);
+  padding:28px 28px;box-shadow:0 1px 3px rgba(0,0,0,.03)
+}
 
-.tbl-wrap{overflow-x:auto;margin:0;border-radius:8px;border:1px solid var(--accent)}
-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;background:var(--white);min-width:560px}
-th{background:var(--green);color:var(--white);padding:11px 13px;text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;border-bottom:2px solid var(--gold)}
+/* ===== MAIN MATRIX TABLE ===== */
+.matrix-card{padding:0;overflow:hidden;background:var(--white);border-radius:16px;border:1px solid var(--accent)}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl-wrap::-webkit-scrollbar{height:6px}
+.tbl-wrap::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;background:var(--white);min-width:600px}
+th{
+  background:var(--green);color:var(--white);padding:14px 14px;text-align:left;
+  font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+  border-bottom:2px solid var(--gold)
+}
 th.right,td.right{text-align:right;font-variant-numeric:tabular-nums}
-td{padding:10px 13px;border-bottom:1px solid #EEE;vertical-align:top;line-height:1.6}
+td{padding:13px 14px;border-bottom:1px solid #EEE;vertical-align:top;line-height:1.55}
 tr:last-child td{border-bottom:none}
 tr:nth-child(even) td{background:#FAFDF7}
 td.use{font-weight:700;color:var(--forest)}
 
-.note{background:var(--pale-green);border-left:4px solid var(--med);padding:14px 18px;border-radius:0 8px 8px 0;margin-top:16px;font-size:12.5px;color:var(--green);font-weight:600;line-height:1.75}
+/* ===== MOBILE MATRIX (CARD LIST) ===== */
+.matrix-mobile{display:none}
+.mm-row{
+  background:var(--white);border-radius:14px;border:1px solid var(--accent);
+  padding:18px 20px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.03)
+}
+.mm-row.featured{border-left:4px solid var(--gold);background:linear-gradient(90deg,#FFFCF3 0%,var(--white) 50%)}
+.mm-use{
+  font-size:15px;font-weight:900;color:var(--forest);
+  margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #EEE;letter-spacing:-.2px
+}
+.mm-tiers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mm-tier{padding:8px 10px;border-radius:8px;background:#FAFDF7}
+.mm-tier.t-prem{background:#FFFCF3}
+.mm-tier.t-ultra{background:#FAF5E8}
+.mm-tier .lbl{font-size:9.5px;color:var(--mid);letter-spacing:1px;font-weight:700;margin-bottom:3px;text-transform:uppercase}
+.mm-tier.t-prem .lbl,.mm-tier.t-ultra .lbl{color:var(--gold-dk)}
+.mm-tier .val{font-size:13.5px;color:var(--brown);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+
+/* ===== NOTE ===== */
+.note{
+  background:var(--pale-green);border-left:4px solid var(--med);
+  padding:18px 22px;border-radius:0 12px 12px 0;margin-top:18px;
+  font-size:13px;color:var(--green);font-weight:600;line-height:1.8
+}
 .note strong{font-weight:800}
 
-.comm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
-.comm{background:var(--white);border:1px solid var(--accent);border-left:4px solid var(--gold);border-radius:8px;padding:16px 20px}
-.comm .name{font-size:14px;color:var(--forest);font-weight:800;margin-bottom:4px}
-.comm .dev{font-size:11px;color:var(--mid);letter-spacing:.5px;margin-bottom:10px}
-.comm .est{background:#FFFCF3;border:1px dashed var(--gold);border-radius:6px;padding:9px 12px;margin-bottom:12px}
-.comm .est-row{display:flex;justify-content:space-between;align-items:center}
-.comm .est-lbl{font-size:10px;color:var(--gold-dk);font-weight:800;letter-spacing:1px;text-transform:uppercase}
-.comm .est-val{font-size:14px;color:var(--brown);font-weight:800;font-variant-numeric:tabular-nums}
-.comm .est-sub{font-size:10px;color:var(--mid);margin-top:3px;line-height:1.5}
-.comm.real .est{background:var(--pale-green);border-color:var(--med);border-style:solid}
+/* ===== COMMUNITY CARDS ===== */
+.comm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+.comm{
+  background:var(--white);border:1px solid var(--accent);border-left:5px solid var(--gold);
+  border-radius:14px;padding:22px 24px;box-shadow:0 1px 3px rgba(0,0,0,.03);
+  display:flex;flex-direction:column
+}
+.comm.real{border-left-color:var(--med)}
+.comm .name{font-size:16px;color:var(--forest);font-weight:900;margin-bottom:6px;letter-spacing:-.2px;line-height:1.4}
+.comm .dev{font-size:11.5px;color:var(--mid);letter-spacing:.5px;margin-bottom:14px;font-weight:600}
+.comm .est{
+  background:linear-gradient(135deg,#FFFCF3,#FFF);
+  border:1px solid var(--gold);border-radius:10px;
+  padding:14px 16px;margin-bottom:14px
+}
+.comm.real .est{background:linear-gradient(135deg,var(--pale-green),#FFF);border-color:var(--med)}
+.comm .est-row{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px}
+.comm .est-lbl{font-size:10px;color:var(--gold-dk);font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
 .comm.real .est-lbl{color:var(--green)}
-.comm .stat{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-top:1px dashed #EEE}
+.comm .est-val{font-size:17px;color:var(--brown);font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
+.comm .est-sub{font-size:11px;color:var(--mid);margin-top:6px;line-height:1.55}
+.comm .stat{
+  display:flex;justify-content:space-between;font-size:13px;
+  padding:8px 0;border-top:1px dashed #E5E5E5
+}
 .comm .stat:first-of-type{border-top:none}
-.comm .stat b{color:var(--brown);font-weight:700;font-variant-numeric:tabular-nums}
-.flag{display:inline-block;font-size:9px;font-weight:800;padding:1px 6px;border-radius:8px;letter-spacing:.5px;margin-left:4px}
+.comm .stat span{color:var(--mid)}
+.comm .stat b{color:var(--brown);font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+
+.flag{
+  display:inline-block;font-size:9.5px;font-weight:800;padding:3px 8px;
+  border-radius:100px;letter-spacing:.5px;margin-left:6px;vertical-align:middle
+}
 .flag-cost{background:var(--pale-green);color:var(--green)}
 .flag-gdv{background:#FBEEEB;color:#8C2A1F}
 .flag-mix{background:#F5EDD4;color:var(--gold-dk)}
 
-.fx{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.fx-cell{background:var(--cream);border:1px solid var(--accent);border-radius:8px;padding:12px 10px;text-align:center}
-.fx-cell .pair{font-size:9.5px;color:var(--mid);letter-spacing:1px;font-weight:700;margin-bottom:4px}
-.fx-cell .val{font-size:15px;color:var(--forest);font-weight:800;font-variant-numeric:tabular-nums}
-
-.footer{background:var(--forest);color:var(--sage);padding:30px 24px;text-align:center;font-size:11px;letter-spacing:1.5px}
-.footer-line{width:60px;height:2px;background:var(--gold);margin:0 auto 14px}
-.footer .by{color:var(--gold);margin-top:6px;font-weight:700}
-
-@media (max-width:840px){
-  .hero h1{font-size:22px}
-  .tier-grid{grid-template-columns:1fr 1fr}
-  .comm-grid{grid-template-columns:1fr}
-  .fx{grid-template-columns:1fr 1fr}
+/* ===== FX ===== */
+.fx{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fx-cell{
+  background:var(--cream);border:1px solid var(--accent);border-radius:12px;
+  padding:18px 12px;text-align:center
 }
-@media (max-width:480px){
-  .tier-grid{grid-template-columns:1fr}
+.fx-cell .pair{font-size:10px;color:var(--mid);letter-spacing:1.5px;font-weight:800;margin-bottom:6px}
+.fx-cell .val{font-size:18px;color:var(--forest);font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+
+/* ===== SOURCE LIST ===== */
+.src-list{list-style:none;font-size:13px;color:var(--mid);line-height:1.95}
+.src-list li{padding:6px 0;border-bottom:1px solid #F0F0F0}
+.src-list li:last-child{border-bottom:none}
+.src-list b{color:var(--forest);font-weight:700;display:inline-block;min-width:160px}
+
+/* ===== FOOTER ===== */
+.footer{
+  background:var(--forest);color:var(--sage);padding:36px 24px;text-align:center;
+  font-size:11.5px;letter-spacing:1.5px
+}
+.footer-line{width:80px;height:2px;background:var(--gold);margin:0 auto 18px;border-radius:1px}
+.footer .by{color:var(--gold);margin-top:8px;font-weight:700}
+
+/* ===========================
+   MOBILE BREAKPOINTS
+   =========================== */
+
+/* Tablet */
+@media (max-width:880px){
+  .hero{padding:72px 22px 60px}
+  .hero h1{font-size:34px}
+  .hero h1 em{font-size:.55em;letter-spacing:6px}
+  .headline-title h2{font-size:24px}
+  .tier-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .comm-grid{grid-template-columns:1fr;gap:14px}
+  .fx{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Mobile */
+@media (max-width:640px){
+  .hero{padding:56px 20px 52px;border-bottom-width:4px}
+  .hero .label{font-size:10px;letter-spacing:4px;padding:6px 14px;margin-bottom:18px}
+  .hero h1{font-size:30px;line-height:1.25}
+  .hero h1 em{font-size:.5em;letter-spacing:5px;margin-top:4px}
+  .hero .lead{font-size:14px;line-height:1.8}
+
+  .headline{padding:48px 16px 56px}
+  .headline-title{margin-bottom:28px}
+  .headline-title h2{font-size:22px;line-height:1.4}
+  .headline-title p{font-size:12.5px}
+
+  .tier-grid{grid-template-columns:1fr;gap:14px}
+  .tier{padding:28px 24px 28px;border-top-width:5px;border-radius:16px}
+  .tier .badge{font-size:10px;padding:5px 14px;margin-bottom:14px}
+  .tier .name{font-size:22px;margin-bottom:20px}
+  .tier .aed{font-size:28px;margin-bottom:10px;letter-spacing:-.8px}
+  .tier .usd,.tier .jpy{font-size:15px}
+  .tier .unit{font-size:10px;margin-top:14px}
+
+  .container{padding:52px 18px 60px}
+  section{margin-bottom:56px}
+  .sec-title{margin-bottom:22px}
+  .sec-title h3{font-size:19px;line-height:1.4;display:block;margin-top:8px}
+  .sec-title .num{vertical-align:middle}
+  .sec-title .desc{font-size:13px;margin-top:12px}
+
+  .card{padding:22px 20px;border-radius:14px}
+
+  /* HIDE DESKTOP TABLE, SHOW MOBILE CARD LIST */
+  .matrix-desktop{display:none}
+  .matrix-mobile{display:block}
+
+  .comm{padding:20px 20px;border-radius:14px}
+  .comm .name{font-size:16px}
+  .comm .est{padding:12px 14px}
+  .comm .est-val{font-size:16px}
+  .comm .est-sub{font-size:11px;line-height:1.6}
+  .comm .stat{font-size:12.5px;padding:7px 0}
+
+  .fx{grid-template-columns:repeat(2,1fr);gap:10px}
+  .fx-cell{padding:14px 10px}
+  .fx-cell .val{font-size:16px}
+
+  .note{font-size:12.5px;padding:16px 18px;line-height:1.75}
+
+  .footer{padding:30px 20px;font-size:11px}
+}
+
+@media (max-width:380px){
+  .hero h1{font-size:26px}
+  .tier .aed{font-size:24px}
+  .mm-tiers{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -105,11 +287,11 @@ td.use{font-weight:700;color:var(--forest)}
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="label">DUBAI · CONSTRUCTION COST PER M²</div>
-    <h1>ドバイの建築コスト <em>1平米あたり</em></h1>
+    <div class="label">DUBAI · 2024-2026</div>
+    <h1>ドバイの建築コスト<em>1平米あたり</em></h1>
     <p class="lead">
-      Turner &amp; Townsend、Arcadis、Stonehaven、JLL（2024-2026）の最新ベンチマークを統合。
-      ドバイで <b>1平米あたりいくらで建つか</b> を、最安〜最高級の4ティアで整理した。
+      Turner &amp; Townsend、Arcadis、Stonehaven、JLL の最新ベンチマークを統合。
+      <b>1m² あたりいくらで建つか</b>を最安〜最高級の4ティアで整理。
     </p>
   </div>
 </section>
@@ -118,41 +300,41 @@ td.use{font-weight:700;color:var(--forest)}
   <div class="headline-inner">
     <div class="headline-title">
       <div class="top">THE HEADLINE</div>
-      <h2>結論：4ティアで見るドバイの 1m² コスト</h2>
+      <h2>4ティアで見るドバイの 1m² コスト</h2>
       <p>建築本体（Shell &amp; Core + 標準MEP + 内装仕上げ）込み。FF&amp;E・外構・許認可費は別建て。</p>
     </div>
     <div class="tier-grid">
       <div class="tier">
-        <div class="grade">一番安い</div>
+        <div class="badge">一番安い</div>
         <div class="name">Affordable</div>
         <div class="aed">AED 3,500-7,500</div>
         <div class="usd">USD 950 - 2,000</div>
         <div class="jpy">15-32 万円</div>
-        <div class="unit">/ m²</div>
+        <div class="unit">PER M²</div>
       </div>
       <div class="tier">
-        <div class="grade">普通</div>
+        <div class="badge">普通</div>
         <div class="name">Mid</div>
         <div class="aed">AED 7,500-12,000</div>
         <div class="usd">USD 2,000 - 3,300</div>
         <div class="jpy">32-51 万円</div>
-        <div class="unit">/ m²</div>
+        <div class="unit">PER M²</div>
       </div>
       <div class="tier t-prem">
-        <div class="grade">プレミアム</div>
+        <div class="badge">プレミアム</div>
         <div class="name">Premium</div>
         <div class="aed">AED 12,000-18,500</div>
         <div class="usd">USD 3,300 - 5,000</div>
         <div class="jpy">51-78 万円</div>
-        <div class="unit">/ m²</div>
+        <div class="unit">PER M²</div>
       </div>
       <div class="tier t-ultra">
-        <div class="grade">最高級</div>
+        <div class="badge">最高級</div>
         <div class="name">Ultra-Premium</div>
         <div class="aed">AED 18,500-31,000</div>
         <div class="usd">USD 5,000 - 8,400</div>
         <div class="jpy">78-131 万円</div>
-        <div class="unit">/ m²</div>
+        <div class="unit">PER M²</div>
       </div>
     </div>
   </div>
@@ -162,11 +344,13 @@ td.use{font-weight:700;color:var(--forest)}
 
   <section>
     <div class="sec-title">
-      <span class="num">01</span><h3>用途別 × グレード別マトリクス（AED/m²）</h3>
-      <div class="desc">主要用途のドバイ建築コスト。Shell &amp; Core + MEP + 内装込み。</div>
+      <span class="num">01</span><h3>用途別 × グレード別マトリクス</h3>
+      <div class="desc">主要用途のドバイ建築コスト（AED/m²）。Shell &amp; Core + MEP + 内装込み。</div>
     </div>
-    <div class="card" style="padding:0;overflow:hidden">
-      <div class="tbl-wrap" style="border:none">
+
+    <!-- DESKTOP TABLE -->
+    <div class="matrix-card matrix-desktop">
+      <div class="tbl-wrap">
         <table>
           <thead>
             <tr>
@@ -193,22 +377,37 @@ td.use{font-weight:700;color:var(--forest)}
       </div>
     </div>
 
+    <!-- MOBILE CARDS -->
+    <div class="matrix-mobile">
+      <div class="mm-row"><div class="mm-use">Luxury Villa</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">4,000-5,000</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">4,900-8,500</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">8,400-18,200</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">18,000-31,000</div></div></div></div>
+      <div class="mm-row"><div class="mm-use">Townhouse</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">3,500-4,500</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">4,250-6,000</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">6,000-8,500</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">9,000-12,000</div></div></div></div>
+      <div class="mm-row"><div class="mm-use">Low-rise (G+4)</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">4,200-4,800</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">4,800-6,000</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">6,000-8,000</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">8,000-11,000</div></div></div></div>
+      <div class="mm-row"><div class="mm-use">Mid-rise (G+10)</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">4,500-5,500</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">5,500-7,200</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">7,200-9,500</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">9,500-13,000</div></div></div></div>
+      <div class="mm-row"><div class="mm-use">High-rise (G+20+)</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">5,800-7,100</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">7,100-9,700</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">9,700-11,000</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">11,000-15,000</div></div></div></div>
+      <div class="mm-row"><div class="mm-use">5★ Hotel / Resort</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">7,000-9,500</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">8,850-12,180</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">12,000-17,500</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">17,500-22,000</div></div></div></div>
+      <div class="mm-row featured"><div class="mm-use">Wellness / Spa ⭐</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">7,500-10,650</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">10,000-12,300</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">12,200-18,500</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">18,500-25,000</div></div></div></div>
+      <div class="mm-row"><div class="mm-use">Clubhouse / Amenity</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">6,100-7,600</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">7,500-10,650</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">10,550-15,000</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">15,000-20,000</div></div></div></div>
+      <div class="mm-row"><div class="mm-use">Office Fit-out</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">2,000-3,500</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">3,500-5,500</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">5,500-8,500</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">8,500-13,000</div></div></div></div>
+      <div class="mm-row"><div class="mm-use">F&amp;B / Restaurant</div><div class="mm-tiers"><div class="mm-tier"><div class="lbl">一番安い</div><div class="val">4,800-6,600</div></div><div class="mm-tier"><div class="lbl">普通</div><div class="val">6,100-10,650</div></div><div class="mm-tier t-prem"><div class="lbl">プレミアム</div><div class="val">10,550-18,500</div></div><div class="mm-tier t-ultra"><div class="lbl">最高級</div><div class="val">18,500-25,000</div></div></div></div>
+    </div>
+
     <div class="note">
       💡 <strong>USD/JPY換算：</strong>
-      AED 10,000/m² ≒ USD 2,723/m² ≒ JPY 42.2万円/m²。AED 1 = JPY 42.21、USD 1 = AED 3.6725 で換算。
+      AED 10,000/m² ≒ USD 2,723/m² ≒ JPY 42.2万円/m²。
+      AED 1 = JPY 42.21、USD 1 = AED 3.6725 で換算。
     </div>
   </section>
 
   <section>
     <div class="sec-title">
       <span class="num">02</span><h3>ドバイ有名コミュニティの 1m² コスト（推定）</h3>
-      <div class="desc">各コミュニティの公開情報から建設費を逆算した推定 1m² コスト。<b>緑枠</b>＝建設契約ベース（高信頼）、<b>金枠</b>＝GDV→建設費換算 + GFA推定（誤差±30%）。</div>
+      <div class="desc">公開情報から建設費を逆算した推定値。<b>緑枠</b>＝建設契約ベース（高信頼）、<b>金枠</b>＝GDV→建設費換算（誤差±30%）。</div>
     </div>
 
-    <div class="note" style="margin:0 0 16px;background:#FFFCF3;border-left-color:var(--gold);color:var(--gold-dk)">
+    <div class="note" style="margin:0 0 18px;background:#FFFCF3;border-left-color:var(--gold);color:var(--gold-dk)">
       📐 <strong>計算メソッド：</strong>
-      建設費 ≈ GDV × 30〜45% / GFA推定（敷地面積 × FAR 0.2〜0.5）。
-      DAMAC Lagoons（建設契約 AED 7B 公開）以外は推定値。実数値は QS による Cost Plan で要再算定。
+      建設費 ≈ GDV × 30〜45% / GFA推定（敷地 × FAR 0.2〜1.5）。
+      DAMAC Lagoons（建設契約 AED 7B 公開）と Palm Jebel Ali ヴィラ（35B 公開）以外は推定値。
     </div>
 
     <div class="comm-grid">
@@ -217,11 +416,11 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">DAMAC · 185-418 ha</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 5,000-9,500</span></div>
-          <div class="est-sub">USD 1,360-2,590 / 21-40 万円/m² · 建設契約 AED 7B ÷ GFA 約 920,000m²</div>
+          <div class="est-sub">USD 1,360-2,590 / 21-40 万円/m²<br>建設契約 7B ÷ GFA 約 920,000m²</div>
         </div>
         <div class="stat"><span>建設契約額</span><b>AED 7.0 Bn</b></div>
         <div class="stat"><span>うちヴィラ建設</span><b>AED 5.6 Bn+</b></div>
-        <div class="stat"><span>グレード推定</span><b>Mid - Premium ヴィラ</b></div>
+        <div class="stat"><span>グレード推定</span><b>Mid-Premium ヴィラ</b></div>
       </div>
 
       <div class="comm">
@@ -229,7 +428,7 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">Sobha Realty · 74 ha</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 15,000-25,000</span></div>
-          <div class="est-sub">USD 4,080-6,810 / 63-105 万円/m² · GDV 55B × 35% ÷ GFA 約 1,110,000m²（FAR 1.5）</div>
+          <div class="est-sub">USD 4,080-6,810 / 63-105 万円/m²<br>GDV 55B × 35% ÷ GFA 約 1,110,000m²（FAR 1.5）</div>
         </div>
         <div class="stat"><span>GDV</span><b>AED 55.0 Bn</b></div>
         <div class="stat"><span>建設費</span><b>非公開</b></div>
@@ -241,7 +440,7 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">Majid Al Futtaim · 300 ha</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 6,000-10,000</span></div>
-          <div class="est-sub">USD 1,630-2,720 / 25-42 万円/m² · 投資 14B × 70% ÷ GFA 約 1,200,000m²</div>
+          <div class="est-sub">USD 1,630-2,720 / 25-42 万円/m²<br>投資 14B × 70% ÷ GFA 約 1,200,000m²</div>
         </div>
         <div class="stat"><span>投資総額</span><b>AED 14.0 Bn+</b></div>
         <div class="stat"><span>ラグーン</span><b>70,000 m²</b></div>
@@ -253,7 +452,7 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">Emaar · 940 ha</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 10,000-15,000</span></div>
-          <div class="est-sub">USD 2,720-4,080 / 42-63 万円/m² · GDV 73.4B × 30% ÷ GFA 約 1,880,000m²（低密度）</div>
+          <div class="est-sub">USD 2,720-4,080 / 42-63 万円/m²<br>GDV 73.4B × 30% ÷ GFA 約 1,880,000m²</div>
         </div>
         <div class="stat"><span>GDV</span><b>AED 73.4 Bn</b></div>
         <div class="stat"><span>水路・公園比率</span><b>25%</b></div>
@@ -265,11 +464,11 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">Emaar · 306 ha</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 5,000-8,000</span></div>
-          <div class="est-sub">USD 1,360-2,180 / 21-34 万円/m² · 投資 15B × 50% ÷ GFA 約 1,220,000m²</div>
+          <div class="est-sub">USD 1,360-2,180 / 21-34 万円/m²<br>投資 15B × 50% ÷ GFA 約 1,220,000m²</div>
         </div>
         <div class="stat"><span>開発総額</span><b>AED 15.0 Bn</b></div>
         <div class="stat"><span>セントラルパーク</span><b>30,000 m²</b></div>
-        <div class="stat"><span>グレード推定</span><b>Mid - Premium ファミリー</b></div>
+        <div class="stat"><span>グレード推定</span><b>Mid-Premium ファミリー</b></div>
       </div>
 
       <div class="comm">
@@ -277,7 +476,7 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">Emaar · 200 ha</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 6,000-10,000</span></div>
-          <div class="est-sub">USD 1,630-2,720 / 25-42 万円/m² · 投資 12B × 50% ÷ GFA 約 700,000m²</div>
+          <div class="est-sub">USD 1,630-2,720 / 25-42 万円/m²<br>投資 12B × 50% ÷ GFA 約 700,000m²</div>
         </div>
         <div class="stat"><span>開発総額</span><b>AED 12.0 Bn</b></div>
         <div class="stat"><span>人工ビーチ</span><b>47,000 m²</b></div>
@@ -289,7 +488,7 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">Meydan · 501 ha</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 9,000-13,000</span></div>
-          <div class="est-sub">USD 2,450-3,540 / 38-55 万円/m² · GDV 35B × 30% ÷ GFA 約 1,000,000m²</div>
+          <div class="est-sub">USD 2,450-3,540 / 38-55 万円/m²<br>GDV 35B × 30% ÷ GFA 約 1,000,000m²</div>
         </div>
         <div class="stat"><span>GDV</span><b>AED 35.0 Bn</b></div>
         <div class="stat"><span>クリスタルラグーン</span><b>世界最大 7km</b></div>
@@ -301,7 +500,7 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">Nakheel · 544戸ヴィラ</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 20,000-32,000</span></div>
-          <div class="est-sub">USD 5,450-8,710 / 84-135 万円/m² · 1戸 AED 64.3M ÷ 平均 2,000-3,200m²</div>
+          <div class="est-sub">USD 5,450-8,710 / 84-135 万円/m²<br>1戸 AED 64.3M ÷ 平均 2,000-3,200m²</div>
         </div>
         <div class="stat"><span>ヴィラ建設契約</span><b>AED 35.0 Bn</b></div>
         <div class="stat"><span>1戸あたり</span><b>約 AED 64.3 Mn</b></div>
@@ -313,7 +512,7 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">Emaar / Meraas · 1,100 ha</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 3,000-5,000</span></div>
-          <div class="est-sub">USD 820-1,360 / 13-21 万円/m² · GDV 40B × 35% ÷ GFA 約 3,850,000m²（大規模混合）</div>
+          <div class="est-sub">USD 820-1,360 / 13-21 万円/m²<br>GDV 40B × 35% ÷ GFA 約 3,850,000m²</div>
         </div>
         <div class="stat"><span>GDV</span><b>AED 40.0 Bn</b></div>
         <div class="stat"><span>ゴルフコース</span><b>120万 m²</b></div>
@@ -325,7 +524,7 @@ td.use{font-weight:700;color:var(--forest)}
         <div class="dev">DAMAC · 900 ha</div>
         <div class="est">
           <div class="est-row"><span class="est-lbl">推定 1m² コスト</span><span class="est-val">AED 4,000-6,500</span></div>
-          <div class="est-sub">USD 1,090-1,770 / 17-27 万円/m² · 投資 30B × 45% ÷ GFA 約 2,700,000m²</div>
+          <div class="est-sub">USD 1,090-1,770 / 17-27 万円/m²<br>投資 30B × 45% ÷ GFA 約 2,700,000m²</div>
         </div>
         <div class="stat"><span>開発総額</span><b>AED 30.0 Bn</b></div>
         <div class="stat"><span>特徴</span><b>ゴルフ・スポーツ・水</b></div>
@@ -336,8 +535,8 @@ td.use{font-weight:700;color:var(--forest)}
     <div class="note">
       ⚠ <strong>GDV ≠ 建設費：</strong>
       Sobha Hartland II（55B）、The Oasis（73.4B）、District One（35B）、Dubai Hills（40B）はすべて <b>販売総額</b>。
-      上記推定 1m² コストは GDV × 30〜45% を建設費とし、敷地 × FAR で GFA を逆算した値。
-      <b>建設契約ベースで公開されているのは DAMAC Lagoons（AED 7B）と Palm Jebel Ali ヴィラ（AED 35B）のみ</b>。
+      建設費として割り戻すと過大評価になる。建設契約ベースで公開されているのは
+      <b>DAMAC Lagoons</b> と <b>Palm Jebel Ali ヴィラ</b> のみ。
     </div>
   </section>
 
@@ -360,17 +559,17 @@ td.use{font-weight:700;color:var(--forest)}
       <span class="num">04</span><h3>出典</h3>
     </div>
     <div class="card">
-      <ul style="list-style:none;font-size:12.5px;color:var(--mid);line-height:2">
-        <li><b style="color:var(--forest)">Turner &amp; Townsend</b> — International Construction Market Survey 2024-2025</li>
-        <li><b style="color:var(--forest)">Arcadis</b> — International Construction Costs 2025</li>
-        <li><b style="color:var(--forest)">AECOM</b> — Middle East Property &amp; Construction Handbook 2024-2025</li>
-        <li><b style="color:var(--forest)">JLL</b> — UAE Construction Market Intelligence Q4 2025</li>
-        <li><b style="color:var(--forest)">Linesight</b> — Country Commodity Report APAC &amp; GCC 2025</li>
-        <li><b style="color:var(--forest)">Stonehaven</b> — UAE Construction Cost Benchmarking 2025</li>
-        <li><b style="color:var(--forest)">Cushman &amp; Wakefield</b> — EMEA Office Fit Out Cost Guide 2025</li>
-        <li><b style="color:var(--forest)">Emaar / DAMAC / Sobha / Nakheel / Meydan / Majid Al Futtaim</b> — Annual Reports</li>
+      <ul class="src-list">
+        <li><b>Turner &amp; Townsend</b>International Construction Market Survey 2024-2025</li>
+        <li><b>Arcadis</b>International Construction Costs 2025</li>
+        <li><b>AECOM</b>Middle East Property &amp; Construction Handbook 2024-2025</li>
+        <li><b>JLL</b>UAE Construction Market Intelligence Q4 2025</li>
+        <li><b>Linesight</b>Country Commodity Report APAC &amp; GCC 2025</li>
+        <li><b>Stonehaven</b>UAE Construction Cost Benchmarking 2025</li>
+        <li><b>Cushman &amp; Wakefield</b>EMEA Office Fit Out Cost Guide 2025</li>
+        <li><b>Developer Reports</b>Emaar / DAMAC / Sobha / Nakheel / Meydan / Majid Al Futtaim</li>
       </ul>
-      <div class="note" style="margin-top:14px">
+      <div class="note" style="margin-top:18px">
         三角検証：Perplexity · ChatGPT Deep Research · Google Deep Research の3社結果を相互検証し、防御的レンジを採用。
       </div>
     </div>
@@ -381,7 +580,7 @@ td.use{font-weight:700;color:var(--forest)}
 <footer class="footer">
   <div class="footer-line"></div>
   <div>DUBAI CONSTRUCTION COST · PER M² · 2024-2026</div>
-  <div class="by">Triangulated Research — Updated 2026.05.06</div>
+  <div class="by">Triangulated Research</div>
 </footer>
 
 </body>
